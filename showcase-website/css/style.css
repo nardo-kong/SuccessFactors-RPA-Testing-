@@ -78,7 +78,7 @@ a { color: inherit; text-decoration: none; }
 .hero::before {
   content: ''; position: absolute; inset: -20% 0 0;
   background: radial-gradient(ellipse at 25% 35%, rgba(250,204,21,0.12) 0%, transparent 60%),
-              radial-gradient(ellipse at 75% 40%, rgba(59,130,246,0.15) 0%, transparent 55%);
+              radial-gradient(ellipse at 75% 40%, rgba(59,130,246,0.15) 0%, transparent 60%);
 }
 .hero-inner {
   position: relative; z-index: 1;
@@ -220,7 +220,7 @@ a { color: inherit; text-decoration: none; }
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-.grid-5 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+.grid-5 { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.5rem; }
 .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
 
 /* ========== BUTTONS ========== */
@@ -432,7 +432,7 @@ a { color: inherit; text-decoration: none; }
 }
 .feature-card::after {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(120% 120% at 0% 0%, var(--accent-veil) 0%, transparent 55%);
+  background: radial-gradient(140% 140% at 0% 0%, var(--accent-veil) 0%, transparent 60%);
   opacity: 0; transition: opacity 0.2s ease; z-index: 0; pointer-events: none;
 }
 .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--accent-border); }
