@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EC-023 Contract Management (HKG) — SF Testing Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><div class="nav-logo-icon">SF</div>SF Testing Platform</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Overview</a></li>
+      <li><a href="../modules/ec.html" class="active"><span class="nav-dot"></span> EC Module</a></li>
+      <li><a href="../modules/time.html">Time Module</a></li>
+      <li><a href="../modules/lms.html">LMS Module</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="case-hero">
+  <div class="container case-hero-inner">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a><span class="breadcrumb-sep">›</span>
+      <a href="../modules/ec.html">EC Module</a><span class="breadcrumb-sep">›</span>
+      <span style="color:rgba(255,255,255,0.75);">EC-023</span>
+    </div>
+    <div class="case-hero-meta">
+      <span class="case-hero-id">EC-023</span>
+      <span class="badge badge-passed">Passed</span>
+      <span class="badge badge-blue">Employee Central</span>
+      <span class="badge badge-amber">Hong Kong</span>
+    </div>
+    <h1 class="case-hero-title">Contract Management — Hong Kong (HKG) Renewal</h1>
+    <p class="case-hero-desc">Validates the contract renewal workflow for Hong Kong entity employees: the HR operator selects the contract renewal action, enters the new contract end date, and the request is processed through a multi-level approval chain before the contract record is updated.</p>
+    <div class="exec-bar">
+      <div class="exec-item"><div class="exec-label">Module</div><div class="exec-value">Employee Central</div></div>
+      <div class="exec-item"><div class="exec-label">POC Reference</div><div class="exec-value" style="font-family:monospace;color:#93c5fd;">POC:1130</div></div>
+      <div class="exec-item"><div class="exec-label">Assertions</div><div class="exec-value"><span class="assert-pill assert-pill-green">11 Passed / 0 Failed</span></div></div>
+      <div class="exec-item"><div class="exec-label">Duration</div><div class="exec-value" style="font-family:monospace;">00:09:15</div></div>
+      <div class="exec-item"><div class="exec-label">Executed</div><div class="exec-value">2026-05-21</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="case-layout">
+    <div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-blue">🎯</div><div class="cs-title">Test Objective</div></div>
+        <div class="cs-body">
+          <p style="font-size:0.875rem;color:#334155;line-height:1.75;">Validate that the contract renewal process for Hong Kong entity employees can be executed end-to-end through automation. The test verifies that the correct contract action is triggered, the new contract end date is entered and saved, the approval workflow is correctly generated and routed, and the employee's contract record reflects the renewed end date upon completion of all approvals.</p>
+          <div style="margin-top:1rem;display:flex;flex-wrap:wrap;gap:0.5rem;">
+            <span style="font-size:0.72rem;font-weight:600;background:#fffbeb;color:#92400e;padding:3px 10px;border-radius:6px;border:1px solid #fef3c7;">Contract Renewal</span>
+            <span style="font-size:0.72rem;font-weight:600;background:#eff6ff;color:#1d4ed8;padding:3px 10px;border-radius:6px;border:1px solid #dbeafe;">HKG Legal Entity</span>
+            <span style="font-size:0.72rem;font-weight:600;background:#ecfdf5;color:#065f46;padding:3px 10px;border-radius:6px;border:1px solid #d1fae5;">Multi-Level Approval</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-amber">📋</div><div class="cs-title">Prerequisites</div></div>
+        <div class="cs-body">
+          <div class="prereq-list">
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">Target employee belongs to the Hong Kong (HKG) legal entity and has a fixed-term contract with an upcoming expiry date</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">Contract renewal workflow is configured and the "ContractRenew" action type is available for the employee's employment type</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">HR operator has proxy capability and permission to initiate contract renewal actions for HKG employees</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">Approval chain for contract renewals is configured with all required approvers (minimum 5 levels)</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">New contract end date and employee identifier loaded in UiPath Data Service as test parameters</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-violet">🔬</div><div class="cs-title">Test Steps</div></div>
+        <div class="cs-body">
+          <div class="steps">
+            <div class="step">
+              <div class="step-num s-given">1</div>
+              <div class="step-content">
+                <span class="step-phase sp-given">GIVEN</span>
+                <div class="step-title">System Authentication</div>
+                <div class="step-desc">Navigate to the SAP SuccessFactors tenant URL. Retrieve service account credentials from Orchestrator. Log in and verify the home dashboard loads successfully.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num s-given">2</div>
+              <div class="step-content">
+                <span class="step-phase sp-given">GIVEN</span>
+                <div class="step-title">Proxy as HR Operator (HKG)</div>
+                <div class="step-desc">Use the proxy function to adopt the designated HKG HR operator identity. Verify the user context reflects the correct legal entity scope before proceeding.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num s-when">3</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Navigate to Employee Profile</div>
+                <div class="step-desc">Search for the target employee by Employee ID. Open their People Profile and navigate to the Employment Information section.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num s-when">4</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Select Contract Renewal Action</div>
+                <div class="step-desc">Click "Take Action" on the employee profile. From the action list, select <strong>"Contract Renewal"</strong> (ContractRenew). Verify the contract renewal form is opened with the current contract details pre-populated.</div>
+                <div class="step-verify"><span class="sv-item">✓ Select ContractRenew</span></div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num s-when">5</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Enter New Contract End Date</div>
+                <div class="step-desc">In the Contract Information section, update the Contract End Date field with the new renewal end date as specified in the test data. Verify the date is accepted and the form displays the updated value without validation errors.</div>
+                <div class="step-verify"><span class="sv-item">✓ Contract End Date Entered</span></div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num s-when">6</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Submit — Retrieve Approval List and Approver</div>
+                <div class="step-desc">Review the contract renewal summary and click Submit. The system builds the approval routing chain. Capture and verify the complete approver list, and retrieve the first approver's identity for the approval loop.</div>
+                <div class="step-verify"><span class="sv-item">✓ GetApprovalList</span><span class="sv-item">✓ GetApprover</span></div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num s-when">7</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Approval Steps 1 through 5</div>
+                <div class="step-desc">Sequentially proxy as each approver in the workflow chain (5 approval steps). At each step: proxy as the approver → navigate to workflow inbox → locate the contract renewal request → review details → click Approve. Continue until all approval steps in the chain are completed.</div>
+                <div class="step-verify">
+                  <span class="sv-item">✓ Approve Step 1 Successful</span>
+                  <span class="sv-item">✓ Approve Step 2 Successful</span>
+                  <span class="sv-item">✓ Approve Step 3 Successful</span>
+                  <span class="sv-item">✓ Approve Step 4 Successful</span>
+                  <span class="sv-item">✓ Approve Step 5 Successful</span>
+                </div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num s-then">8</div>
+              <div class="step-content">
+                <span class="step-phase sp-then">THEN</span>
+                <div class="step-title">Verify Contract Renewal Completed</div>
+                <div class="step-desc">Return to the employee's Employment Information. Open the contract details and verify: (1) The new contract end date is displayed. (2) The workflow status shows "Completed". (3) The change history records the renewal event. Screenshot captured as evidence.</div>
+                <div class="step-verify"><span class="sv-item">✓ Contract Renewal Finished</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-green">✅</div><div class="cs-title">Expected Results</div></div>
+        <div class="cs-body">
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:1rem;font-size:0.85rem;color:#166534;"><strong>Contract action triggered correctly:</strong> The ContractRenew action type is available and selected successfully. The renewal form opens with current contract data pre-filled.</div>
+            <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:1rem;font-size:0.85rem;color:#1e3a5f;"><strong>New end date accepted:</strong> The new contract end date is validated and saved. No date format or business rule errors are raised.</div>
+            <div style="background:#f5f3ff;border:1px solid #ddd6fe;border-radius:10px;padding:1rem;font-size:0.85rem;color:#4c1d95;"><strong>Full approval chain completed:</strong> All 5 approvers successfully approve the request in sequence. The workflow completes without interruption.</div>
+            <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:1rem;font-size:0.85rem;color:#78350f;"><strong>Contract record updated:</strong> The employee's contract end date reflects the new renewal date. All 11 assertions pass (11/11).</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-slate">📊</div><div class="cs-title">Assertion Summary — 11 Passed / 0 Failed</div></div>
+        <div style="overflow-x:auto;">
+          <table class="assert-table">
+            <thead><tr><th>#</th><th>Assertion Name</th><th>Type</th><th>Result</th></tr></thead>
+            <tbody>
+              <tr><td><span class="assert-num">1</span></td><td>Login</td><td style="color:#94a3b8;font-size:0.775rem;">Login</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">2</span></td><td>Select ContractRenew</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">3</span></td><td>Enter Contract End Date</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">4</span></td><td>GetApprovalList</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">5</span></td><td>GetApprover</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">6</span></td><td>Approve Step 1 — successful</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">7</span></td><td>Approve Step 2 — successful</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">8</span></td><td>Approve Step 3 — successful</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">9</span></td><td>Approve Step 4 — successful</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">10</span></td><td>Approve Step 5 — successful</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">11</span></td><td>Contract Renewal Finished</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-blue">📸</div><div class="cs-title">Execution Screenshots</div></div>
+        <div class="cs-body">
+          <div class="screenshots-grid">
+            <div><div class="img-placeholder"><div class="img-placeholder-icon">🖼️</div><div class="img-placeholder-text">Contract Renewal Form — End Date Entered</div></div><div class="img-caption">Assertion 3 — End date confirmed</div></div>
+            <div><div class="img-placeholder"><div class="img-placeholder-icon">🖼️</div><div class="img-placeholder-text">Approval Workflow — All Approvers</div></div><div class="img-caption">Assertion 4 — GetApprovalList</div></div>
+            <div><div class="img-placeholder"><div class="img-placeholder-icon">🖼️</div><div class="img-placeholder-text">Contract Record — Renewal Completed</div></div><div class="img-caption">Assertion 11 — Contract Renewal Finished</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div>
+      <div class="sidebar-card">
+        <div class="sidebar-title">Case Information</div>
+        <div class="sidebar-row"><div class="sr-label">Module</div><div class="sr-value">Employee Central</div></div>
+        <div class="sidebar-row"><div class="sr-label">Case ID</div><div class="sr-value" style="font-family:monospace;color:#2563eb;font-weight:700;">EC-023</div></div>
+        <div class="sidebar-row"><div class="sr-label">POC Reference</div><div class="sr-value" style="font-family:monospace;">POC:1130</div></div>
+        <div class="sidebar-row"><div class="sr-label">Legal Entity</div><div class="sr-value">Hong Kong (HKG)</div></div>
+        <div class="sidebar-row"><div class="sr-label">Test Type</div><div class="sr-value">End-to-End Functional</div></div>
+        <div class="sidebar-row"><div class="sr-label">Automation Engine</div><div class="sr-value">UiPath RPA (BDD)</div></div>
+      </div>
+      <div class="sidebar-card" style="margin-top:1rem;">
+        <div class="sidebar-title">Execution Summary</div>
+        <div class="sidebar-row"><div class="sr-label">Last Executed</div><div class="sr-value">2026-05-21</div></div>
+        <div class="sidebar-row"><div class="sr-label">Duration</div><div class="sr-value" style="font-family:monospace;font-weight:700;">00:09:15</div></div>
+        <div class="sidebar-row"><div class="sr-label">Total Assertions</div><div class="sr-value">11</div></div>
+        <div class="sidebar-row"><div class="sr-label">Passed</div><div class="sr-value"><span style="color:#059669;font-weight:700;">● 11</span></div></div>
+        <div class="sidebar-row"><div class="sr-label">Failed</div><div class="sr-value">0</div></div>
+        <div class="sidebar-row"><div class="sr-label">Status</div><div class="sr-value"><span class="badge badge-passed">Passed</span></div></div>
+      </div>
+      <div class="sidebar-card" style="margin-top:1rem;">
+        <div class="sidebar-title">Related Cases</div>
+        <div class="sidebar-row" style="flex-direction:row;align-items:center;justify-content:space-between;"><div><div class="sr-label">EC-007</div><div class="sr-value" style="font-size:0.78rem;">Promotion Management</div></div><a href="ec-007.html" style="color:#2563eb;font-size:0.775rem;font-weight:600;text-decoration:none;">View →</a></div>
+        <div class="sidebar-row" style="flex-direction:row;align-items:center;justify-content:space-between;"><div><div class="sr-label">EC-012</div><div class="sr-value" style="font-size:0.78rem;">Probation Management</div></div><a href="ec-012.html" style="color:#2563eb;font-size:0.775rem;font-weight:600;text-decoration:none;">View →</a></div>
+        <div class="sidebar-row" style="flex-direction:row;align-items:center;justify-content:space-between;"><div><div class="sr-label">EC-002</div><div class="sr-value" style="font-size:0.78rem;">Create Position</div></div><a href="ec-002.html" style="color:#2563eb;font-size:0.775rem;font-weight:600;text-decoration:none;">View →</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer"><div class="container"><div class="footer-inner"><div class="footer-left"><div class="nav-logo-icon">SF</div><span class="footer-name">SF Testing Platform</span></div><div class="footer-right">SAP SuccessFactors Automated Testing · SF Release Testing · 2026</div></div></div></footer>
+</body>
+</html>

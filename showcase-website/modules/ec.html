@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Central — SF Testing Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><div class="nav-logo-icon">SF</div>SF Testing Platform</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Overview</a></li>
+      <li><a href="ec.html" class="active"><span class="nav-dot"></span> EC Module</a></li>
+      <li><a href="time.html">Time Module</a></li>
+      <li><a href="lms.html">LMS Module</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- MODULE HERO -->
+<section class="module-hero">
+  <div class="container module-hero-inner">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <span style="color:rgba(255,255,255,0.75);">EC Module</span>
+    </div>
+    <div class="module-hero-icon">👤</div>
+    <div style="font-size:0.75rem;font-weight:700;color:#60a5fa;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">EC MODULE</div>
+    <h1 class="module-hero-title">Employee Central</h1>
+    <p class="module-hero-sub">Comprehensive test coverage for core HR processes — from employee lifecycle management and onboarding through to position management, compensation changes, and employment event workflows.</p>
+    <div class="module-hero-stats">
+      <div class="mhs-item"><div class="mhs-number">23</div><div class="mhs-label">Total Cases</div></div>
+      <div class="mhs-div"></div>
+      <div class="mhs-item"><div class="mhs-number">8</div><div class="mhs-label">Detailed Pages</div></div>
+      <div class="mhs-div"></div>
+      <div class="mhs-item"><div class="mhs-number">100%</div><div class="mhs-label">Pass Rate</div></div>
+      <div class="mhs-div"></div>
+      <div class="mhs-item"><div class="mhs-number">~7 min</div><div class="mhs-label">Avg Duration</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE OVERVIEW -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Module Overview</div>
+      <h2 class="section-title">What Is Employee Central?</h2>
+      <p class="section-desc">Employee Central (EC) is the foundational core HR module of SAP SuccessFactors, managing all employee master data, organisational structures, and employment events. This test suite validates the complete employee lifecycle — from initial onboarding through to employment changes and offboarding.</p>
+    </div>
+    <div class="grid-4" style="margin-top:2rem;">
+      <div style="background:white;border-radius:12px;border:1px solid #e2e8f0;padding:1.25rem;text-align:center;">
+        <div style="font-size:1.75rem;font-weight:800;background:linear-gradient(135deg,#1d4ed8,#4f46e5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-0.03em;line-height:1;">23</div>
+        <div style="font-size:0.72rem;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;margin-top:5px;">Total Test Cases</div>
+      </div>
+      <div style="background:white;border-radius:12px;border:1px solid #e2e8f0;padding:1.25rem;text-align:center;">
+        <div style="font-size:1.75rem;font-weight:800;background:linear-gradient(135deg,#059669,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-0.03em;line-height:1;">100%</div>
+        <div style="font-size:0.72rem;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;margin-top:5px;">Pass Rate</div>
+      </div>
+      <div style="background:white;border-radius:12px;border:1px solid #e2e8f0;padding:1.25rem;text-align:center;">
+        <div style="font-size:1.75rem;font-weight:800;background:linear-gradient(135deg,#1d4ed8,#4f46e5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-0.03em;line-height:1;">14</div>
+        <div style="font-size:0.72rem;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;margin-top:5px;">Avg Assertions / Case</div>
+      </div>
+      <div style="background:white;border-radius:12px;border:1px solid #e2e8f0;padding:1.25rem;text-align:center;">
+        <div style="font-size:1.75rem;font-weight:800;background:linear-gradient(135deg,#059669,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-0.03em;line-height:1;">~7 min</div>
+        <div style="font-size:0.72rem;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;margin-top:5px;">Average Duration</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEST CASES GRID -->
+<section class="section section-slate">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Test Cases</div>
+      <h2 class="section-title">EC Module Test Cases</h2>
+      <p class="section-desc">Click any completed case to view detailed test steps, assertions, and execution evidence.</p>
+    </div>
+
+    <!-- COMPLETED CASES -->
+    <div style="margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem;">
+      <span style="font-size:0.75rem;font-weight:700;color:#059669;text-transform:uppercase;letter-spacing:0.07em;">● Completed</span>
+    </div>
+    <div class="grid-3" style="margin-bottom:2.5rem;">
+
+      <a href="../cases/ec-001.html" class="case-card">
+        <div class="case-card-body">
+          <div class="case-card-header">
+            <span class="case-id">EC-001</span>
+            <span class="badge badge-passed">Passed</span>
+          </div>
+          <div class="case-title">Create and Maintain Jobs</div>
+          <div class="case-desc">Create new Job Family and Job Code records; update existing entries through the Company Structure administration interface.</div>
+          <div class="case-meta">
+            <span class="meta-tag">POC:761</span>
+            <span class="meta-tag">9 assertions</span>
+            <span class="meta-tag">00:04:20</span>
+          </div>
+        </div>
+        <div class="case-card-footer">
+          <span class="text-muted text-sm">2026-05-21</span>
+          <span style="color:#2563eb;font-size:0.775rem;font-weight:600;">View Details →</span>
+        </div>
+      </a>
+
+      <a href="../cases/ec-002.html" class="case-card">
+        <div class="case-card-body">
+          <div class="case-card-header">
+            <span class="case-id">EC-002</span>
+            <span class="badge badge-passed">Passed</span>
+          </div>
+          <div class="case-title">Create Position</div>
+          <div class="case-desc">Create a new position in the Position Org Chart and route through the multi-level approval workflow until fully approved and active.</div>
+          <div class="case-meta">
+            <span class="meta-tag">POC:303</span>
+            <span class="meta-tag">14 assertions</span>
+            <span class="meta-tag">00:07:09</span>
+          </div>
+        </div>
+        <div class="case-card-footer">
+          <span class="text-muted text-sm">2026-05-22</span>
+          <span style="color:#2563eb;font-size:0.775rem;font-weight:600;">View Details →</span>
+        </div>
+      </a>
+
+      <a href="../cases/ec-007.html" class="case-card">
+        <div class="case-card-body">
+          <div class="case-card-header">
+            <span class="case-id">EC-007</span>
+            <span class="badge badge-passed">Passed</span>
+          </div>
+          <div class="case-title">Promotion Management</div>
+          <div class="case-desc">Off-cycle promotion with position and compensation change, routed through a complete multi-approver workflow with 6 sequential approvals.</div>
+          <div class="case-meta">
+            <span class="meta-tag">POC:1055</span>
+            <span class="meta-tag">11 assertions</span>
+            <span class="meta-tag">00:10:39</span>
+          </div>
+        </div>
+        <div class="case-card-footer">
+          <span class="text-muted text-sm">2026-05-21</span>
+          <span style="color:#2563eb;font-size:0.775rem;font-weight:600;">View Details →</span>
+        </div>
+      </a>
+
+      <a href="../cases/ec-008.html" class="case-card">
+        <div class="case-card-body">
+          <div class="case-card-header">
+            <span class="case-id">EC-008</span>
+            <span class="badge badge-passed">Passed</span>
+          </div>
+          <div class="case-title">New Hire — Mainland China Entity</div>
+          <div class="case-desc">End-to-end MCN new employee onboarding including national ID, bank info, MCN-specific personal fields, and HR approval workflow.</div>
+          <div class="case-meta">
+            <span class="meta-tag">POC:2184</span>
+            <span class="meta-tag">25 assertions</span>
+            <span class="meta-tag">00:09:08</span>
+          </div>
+        </div>
+        <div class="case-card-footer">
+          <span class="text-muted text-sm">2026-05-21</span>
+          <span style="color:#2563eb;font-size:0.775rem;font-weight:600;">View Details →</span>
+        </div>
+      </a>
+
+      <a href="ec-012.html" class="case-card">
+        <div class="case-card-body">
+          <div class="case-card-header">
+            <span class="case-id">EC-012</span>
+            <span class="badge badge-passed">Passed</span>
+          </div>
+          <div class="case-title">Probation Management</div>
+          <div class="case-desc">Update employee probation status to Completed and route the change through the configured Line Manager and HR approval chain.</div>
+          <div class="case-meta">
+            <span class="meta-tag">POC:1806</span>
+            <span class="meta-tag">5 assertions</span>
+            <span class="meta-tag">00:06:14</span>
+          </div>
+        </div>
+        <div class="case-card-footer">
+          <span class="text-muted text-sm">2026-05-21</span>
+          <span style="color:#2563eb;font-size:0.775rem;font-weight:600;">View Details →</span>
+        </div>
+      </a>
+
+      <a href="ec-023.html" class="case-card">
+        <div class="case-card-body">
+          <div class="case-card-header">
+            <span class="case-id">EC-023</span>
+            <span class="badge badge-passed">Passed</span>
+          </div>
+          <div class="case-title">Contract Management — HKG Renewal</div>
+          <div class="case-desc">Contract renewal process for HKG entity — enter new contract end date and route through 4-level approval workflow to completion.</div>
+          <div class="case-meta">
+            <span class="meta-tag">POC:1130</span>
+            <span class="meta-tag">11 assertions</span>
+            <span class="meta-tag">00:09:15</span>
+          </div>
+        </div>
+        <div class="case-card-footer">
+          <span class="text-muted text-sm">2026-05-21</span>
+          <span style="color:#2563eb;font-size:0.775rem;font-weight:600;">View Details →</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- COMING SOON CASES -->
+    <div style="margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem;">
+      <span style="font-size:0.75rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.07em;">○ Coming Soon</span>
+    </div>
+    <div class="grid-3">
+      <div class="case-card-placeholder"><div style="font-size:1.5rem;">🔒</div><div class="case-card-placeholder-title">EC-003 · New Hire (HKG)</div></div>
+      <div class="case-card-placeholder"><div style="font-size:1.5rem;">🔒</div><div class="case-card-placeholder-title">EC-004 · Maintain Pay Structure</div></div>
+      <div class="case-card-placeholder"><div style="font-size:1.5rem;">🔒</div><div class="case-card-placeholder-title">EC-005 · Gratuity Information</div></div>
+      <div class="case-card-placeholder"><div style="font-size:1.5rem;">🔒</div><div class="case-card-placeholder-title">EC-009 · Maintain Gratuity Info</div></div>
+      <div class="case-card-placeholder"><div style="font-size:1.5rem;">🔒</div><div class="case-card-placeholder-title">EC-010 · Create Contingent Worker</div></div>
+      <div class="case-card-placeholder"><div style="font-size:1.5rem;">🔒</div><div class="case-card-placeholder-title">EC-011 · Commercial Insurance</div></div>
+      <div class="case-card-placeholder"><div style="font-size:1.5rem;">🔒</div><div class="case-card-placeholder-title">EC-014 · Add Secondment</div></div>
+      <div class="case-card-placeholder"><div style="font-size:1.5rem;">🔒</div><div class="case-card-placeholder-title">EC-015 · Create New LP</div></div>
+      <div class="case-card-placeholder"><div style="font-size:1.5rem;">🔒</div><div class="case-card-placeholder-title">EC-016 · Social Insurance & PF</div></div>
+      <div class="case-card-placeholder"><div style="font-size:1.5rem;">🔒</div><div class="case-card-placeholder-title">EC-018 · Termination</div></div>
+      <div class="case-card-placeholder"><div style="font-size:1.5rem;">🔒</div><div class="case-card-placeholder-title">EC-019 · Medical Reimbursement</div></div>
+      <div class="case-card-placeholder"><div style="font-size:1.5rem;">🔒</div><div class="case-card-placeholder-title">EC-024 · Rehire Inactive Employee</div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left"><div class="nav-logo-icon">SF</div><span class="footer-name">SF Testing Platform</span></div>
+      <div class="footer-right">SAP SuccessFactors Automated Testing &nbsp;·&nbsp; SF Release Testing &nbsp;·&nbsp; 2026</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

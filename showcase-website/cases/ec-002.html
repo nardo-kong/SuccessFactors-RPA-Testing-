@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EC-002 Create Position — SF Testing Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><div class="nav-logo-icon">SF</div>SF Testing Platform</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Overview</a></li>
+      <li><a href="../modules/ec.html" class="active"><span class="nav-dot"></span>EC Module</a></li>
+      <li><a href="../modules/time.html">Time Module</a></li>
+      <li><a href="../modules/lms.html">LMS Module</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="case-hero">
+  <div class="container case-hero-inner">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a><span class="breadcrumb-sep">›</span>
+      <a href="../modules/ec.html">EC Module</a><span class="breadcrumb-sep">›</span>
+      <span style="color:rgba(255,255,255,0.75);">EC-002</span>
+    </div>
+    <div class="case-hero-meta">
+      <span class="case-hero-id">EC-002</span>
+      <span class="badge badge-passed">Passed</span>
+      <span class="badge badge-blue">Employee Central</span>
+      <span class="badge badge-violet">Position Management</span>
+    </div>
+    <h1 class="case-hero-title">Create Position — Position Org Chart</h1>
+    <p class="case-hero-desc">Validates the complete position creation workflow: a new position is created with full organisational and job requirement data via the Position Org Chart, submitted for approval, processed through a five-level approval chain, and confirmed as Active upon completion.</p>
+    <div class="exec-bar">
+      <div class="exec-item"><div class="exec-label">POC Reference</div><div class="exec-value" style="font-family:monospace;color:#93c5fd;">POC:303</div></div>
+      <div class="exec-item"><div class="exec-label">Assertions</div><div class="exec-value"><span class="assert-pill assert-pill-green">14 Passed / 0 Failed</span></div></div>
+      <div class="exec-item"><div class="exec-label">Duration</div><div class="exec-value" style="font-family:monospace;">00:07:09</div></div>
+      <div class="exec-item"><div class="exec-label">Executed</div><div class="exec-value">2026-05-21</div></div>
+      <div class="exec-item"><div class="exec-label">Automation</div><div class="exec-value">UiPath RPA (BDD)</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="case-layout">
+    <div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-blue">🎯</div><div class="cs-title">Test Objective</div></div>
+        <div class="cs-body">
+          <p style="font-size:0.875rem;color:#334155;line-height:1.75;">Validate that a new headcount position can be created through the SAP SuccessFactors Position Org Chart interface, with all required data sections completed — including basic position information, organisational assignment, and job requirements. The test further verifies that the creation request is successfully routed through the configured five-level approval chain and that the position transitions to Active status upon final approval.</p>
+          <div style="margin-top:1rem;display:flex;flex-wrap:wrap;gap:0.5rem;">
+            <span style="font-size:0.72rem;font-weight:600;background:#eff6ff;color:#1d4ed8;padding:3px 10px;border-radius:6px;border:1px solid #dbeafe;">Position Creation</span>
+            <span style="font-size:0.72rem;font-weight:600;background:#f5f3ff;color:#6d28d9;padding:3px 10px;border-radius:6px;border:1px solid #ede9fe;">Org Chart Navigation</span>
+            <span style="font-size:0.72rem;font-weight:600;background:#ecfdf5;color:#065f46;padding:3px 10px;border-radius:6px;border:1px solid #d1fae5;">5-Level Approval</span>
+            <span style="font-size:0.72rem;font-weight:600;background:#fffbeb;color:#92400e;padding:3px 10px;border-radius:6px;border:1px solid #fef3c7;">Status Verification</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-amber">📋</div><div class="cs-title">Prerequisites</div></div>
+        <div class="cs-body">
+          <div class="prereq-list">
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">HR administrator account with permission to create and submit new positions in the Position Org Chart</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">Target parent position and reporting hierarchy pre-configured in the Org Chart for the new position to be inserted under</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">Job Code and Job Classification that will be assigned to the new position are already active in Job Structure</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">Position creation approval workflow configured with five approvers covering HR, Finance, and executive levels</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">Position data (title, code, effective date, FTE, location, department, division) loaded in UiPath Data Service as test parameters</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-violet">🔬</div><div class="cs-title">Test Steps</div></div>
+        <div class="cs-body">
+          <div class="steps">
+
+            <div class="step">
+              <div class="step-num s-given">1</div>
+              <div class="step-content">
+                <span class="step-phase sp-given">GIVEN</span>
+                <div class="step-title">System Authentication</div>
+                <div class="step-desc">Log in to SAP SuccessFactors with HR admin credentials retrieved from UiPath Orchestrator. Verify the home dashboard loads before proceeding.</div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">2</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Navigate to Position Org Chart</div>
+                <div class="step-desc">From the navigation menu, go to Admin Center → Position Org Chart. Search for and locate the parent department node under which the new position will be created. Verify the org chart renders correctly.</div>
+                <div class="step-verify"><span class="sv-item">✓ Navigate to Position Org Chart</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">3</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Initiate New Position Creation</div>
+                <div class="step-desc">Right-click or use the context menu on the parent node to select "Add Direct Report" or "Create New Position". The new position form opens. Set the Effective Date from test data.</div>
+                <div class="step-verify"><span class="sv-item">✓ New Position Form Opened</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">4</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Enter Basic Position Information</div>
+                <div class="step-desc">Complete the Basic Information section: (1) Position Code (system-generated or manually entered), (2) Position Title, (3) Position Type = Regular, (4) FTE = 1.0, (5) Max Occupancy = 1, (6) Effective Date. Save this section.</div>
+                <div class="step-verify"><span class="sv-item">✓ Basic Position Info Saved</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">5</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Enter Organisational Data</div>
+                <div class="step-desc">Complete the Org Data section: (1) Company / Legal Entity, (2) Business Unit, (3) Division, (4) Department, (5) Location, (6) Cost Centre (if applicable). Verify all dropdowns are selected from valid configured values. Save.</div>
+                <div class="step-verify"><span class="sv-item">✓ Org Data Saved</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">6</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Enter Job Requirements</div>
+                <div class="step-desc">Complete the Job Requirements section: (1) Job Classification (linked to Job Code), (2) Employee Class, (3) Regular/Temporary flag, (4) Rostered / Non-Rostered designation, (5) Pay Grade. Save the section.</div>
+                <div class="step-verify"><span class="sv-item">✓ Job Requirements Saved</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">7</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Submit Position Request — Retrieve Approval List</div>
+                <div class="step-desc">Review all three data sections. Click "Save and Submit" to initiate the position creation workflow. The system dynamically builds the approval routing. Capture and verify the returned approver list contains all expected participants.</div>
+                <div class="step-verify"><span class="sv-item">✓ GetApprovalList</span><span class="sv-item">✓ Position Submitted</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">8</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Approval — Steps 1 through 5</div>
+                <div class="step-desc">Sequentially proxy as each of the five approvers in the workflow chain. At each step: (1) proxy into the approver's account, (2) navigate to the workflow inbox, (3) locate the position creation request, (4) review position details (title, org data, job requirements, FTE), (5) click Approve. Repeat for all five approvers until the chain is fully completed.</div>
+                <div class="step-verify">
+                  <span class="sv-item">✓ Approve Step 1 Successful</span>
+                  <span class="sv-item">✓ Approve Step 2 Successful</span>
+                  <span class="sv-item">✓ Approve Step 3 Successful</span>
+                  <span class="sv-item">✓ Approve Step 4 Successful</span>
+                  <span class="sv-item">✓ Approve Step 5 Successful</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-then">9</div>
+              <div class="step-content">
+                <span class="step-phase sp-then">THEN</span>
+                <div class="step-title">Verify Position is Active in Org Chart</div>
+                <div class="step-desc">Return to the Position Org Chart and search for the newly created position by its position code. Verify: (1) Position appears in the org chart under the correct parent node, (2) Status shows "Active", (3) All data fields (title, org assignment, job requirements) match the submitted values. Screenshot captured as evidence.</div>
+                <div class="step-verify"><span class="sv-item">✓ Position Active — Verified</span></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-green">✅</div><div class="cs-title">Expected Results</div></div>
+        <div class="cs-body">
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            <div style="display:flex;gap:0.75rem;padding:0.875rem 1rem;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;"><span>✅</span><div><strong style="font-size:0.8rem;color:#065f46;">All three data sections saved without errors</strong><div style="font-size:0.8rem;color:#374151;margin-top:2px;">Basic Info, Org Data, and Job Requirements each save successfully with confirmation indicators.</div></div></div>
+            <div style="display:flex;gap:0.75rem;padding:0.875rem 1rem;background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;"><span>🔄</span><div><strong style="font-size:0.8rem;color:#1e40af;">Complete 5-level approval chain processed</strong><div style="font-size:0.8rem;color:#374151;margin-top:2px;">The position request routes through all five approvers in the correct sequence without interruption or routing failure.</div></div></div>
+            <div style="display:flex;gap:0.75rem;padding:0.875rem 1rem;background:#f5f3ff;border:1px solid #ddd6fe;border-radius:10px;"><span>📍</span><div><strong style="font-size:0.8rem;color:#4c1d95;">Position status transitions to Active</strong><div style="font-size:0.8rem;color:#374151;margin-top:2px;">After final approval, the new position is visible in the Position Org Chart with status Active and all data fields correctly populated.</div></div></div>
+            <div style="display:flex;gap:0.75rem;padding:0.875rem 1rem;background:#fefce8;border:1px solid #fef08a;border-radius:10px;"><span>📊</span><div><strong style="font-size:0.8rem;color:#713f12;">All 14 assertions pass (14/14)</strong></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-slate">📊</div><div class="cs-title">Assertion Summary — 14 Passed / 0 Failed</div></div>
+        <div style="overflow-x:auto;">
+          <table class="assert-table">
+            <thead><tr><th>#</th><th>Assertion Name</th><th>Type</th><th>Result</th></tr></thead>
+            <tbody>
+              <tr><td><span class="assert-num">1</span></td><td>Login</td><td style="color:#94a3b8;font-size:0.775rem;">Login</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">2</span></td><td>Navigate to Position Org Chart</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">3</span></td><td>New Position Form Opened</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">4</span></td><td>Basic Position Info Saved</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">5</span></td><td>Org Data Saved</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">6</span></td><td>Job Requirements Saved</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">7</span></td><td>GetApprovalList</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">8</span></td><td>Position Submitted</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">9</span></td><td>Approve Step 1 — successful</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">10</span></td><td>Approve Step 2 — successful</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">11</span></td><td>Approve Step 3 — successful</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">12</span></td><td>Approve Step 4 — successful</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">13</span></td><td>Approve Step 5 — successful</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">14</span></td><td>Position Active — Verified</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-blue">📸</div><div class="cs-title">Execution Screenshots</div></div>
+        <div class="cs-body">
+          <div class="screenshots-grid">
+            <div><div class="img-placeholder"><div class="img-placeholder-icon">🖼️</div><div class="img-placeholder-text">Position Form — All Sections Completed</div></div><div class="img-caption">Assertion 6 — Job Requirements Saved</div></div>
+            <div><div class="img-placeholder"><div class="img-placeholder-icon">🖼️</div><div class="img-placeholder-text">Approval Workflow — 5 Approvers</div></div><div class="img-caption">Assertion 7 — GetApprovalList</div></div>
+            <div><div class="img-placeholder"><div class="img-placeholder-icon">🖼️</div><div class="img-placeholder-text">Position Org Chart — New Position Active</div></div><div class="img-caption">Assertion 14 — Position Active</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div>
+      <div class="sidebar-card">
+        <div class="sidebar-title">Case Information</div>
+        <div class="sidebar-row"><div class="sr-label">Module</div><div class="sr-value">Employee Central</div></div>
+        <div class="sidebar-row"><div class="sr-label">Case ID</div><div class="sr-value" style="font-family:monospace;color:#2563eb;font-weight:700;">EC-002</div></div>
+        <div class="sidebar-row"><div class="sr-label">POC Reference</div><div class="sr-value" style="font-family:monospace;">POC:303</div></div>
+        <div class="sidebar-row"><div class="sr-label">Test Type</div><div class="sr-value">End-to-End Functional</div></div>
+        <div class="sidebar-row"><div class="sr-label">Automation</div><div class="sr-value">UiPath RPA (BDD)</div></div>
+      </div>
+      <div class="sidebar-card" style="margin-top:1rem;">
+        <div class="sidebar-title">Execution Summary</div>
+        <div class="sidebar-row"><div class="sr-label">Last Executed</div><div class="sr-value">2026-05-21</div></div>
+        <div class="sidebar-row"><div class="sr-label">Duration</div><div class="sr-value" style="font-family:monospace;font-weight:700;">00:07:09</div></div>
+        <div class="sidebar-row"><div class="sr-label">Total Assertions</div><div class="sr-value">14</div></div>
+        <div class="sidebar-row"><div class="sr-label">Passed</div><div class="sr-value"><span style="color:#059669;font-weight:700;">● 14</span></div></div>
+        <div class="sidebar-row"><div class="sr-label">Failed</div><div class="sr-value">0</div></div>
+        <div class="sidebar-row"><div class="sr-label">Status</div><div class="sr-value"><span class="badge badge-passed">Passed</span></div></div>
+      </div>
+      <div class="sidebar-card" style="margin-top:1rem;">
+        <div class="sidebar-title">Related Cases</div>
+        <div class="sidebar-row" style="flex-direction:row;align-items:center;justify-content:space-between;"><div><div class="sr-label">EC-001</div><div class="sr-value" style="font-size:0.78rem;">Create &amp; Maintain Jobs</div></div><a href="ec-001.html" style="color:#2563eb;font-size:0.775rem;font-weight:600;text-decoration:none;">View →</a></div>
+        <div class="sidebar-row" style="flex-direction:row;align-items:center;justify-content:space-between;"><div><div class="sr-label">EC-007</div><div class="sr-value" style="font-size:0.78rem;">Promotion Management</div></div><a href="ec-007.html" style="color:#2563eb;font-size:0.775rem;font-weight:600;text-decoration:none;">View →</a></div>
+        <div class="sidebar-row" style="flex-direction:row;align-items:center;justify-content:space-between;"><div><div class="sr-label">EC-008</div><div class="sr-value" style="font-size:0.78rem;">New Hire (MCN)</div></div><a href="ec-008.html" style="color:#2563eb;font-size:0.775rem;font-weight:600;text-decoration:none;">View →</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer"><div class="container"><div class="footer-inner"><div class="footer-left"><div class="nav-logo-icon">SF</div><span class="footer-name">SF Testing Platform</span></div><div class="footer-right">SAP SuccessFactors Automated Testing · SF Release Testing · 2026</div></div></div></footer>
+</body>
+</html>

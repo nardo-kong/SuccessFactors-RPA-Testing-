@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TIME-009 Request Leave SL — SF Testing Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><div class="nav-logo-icon">SF</div>SF Testing Platform</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Overview</a></li>
+      <li><a href="../modules/ec.html">EC Module</a></li>
+      <li><a href="../modules/time.html" class="active"><span class="nav-dot"></span>Time Module</a></li>
+      <li><a href="../modules/lms.html">LMS Module</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="case-hero">
+  <div class="container case-hero-inner">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a><span class="breadcrumb-sep">›</span>
+      <a href="../modules/time.html">Time Module</a><span class="breadcrumb-sep">›</span>
+      <span style="color:rgba(255,255,255,0.75);">TIME-009</span>
+    </div>
+    <div class="case-hero-meta">
+      <span class="case-hero-id">TIME-009</span>
+      <span class="badge badge-passed">Passed</span>
+      <span class="badge badge-blue">Time Management</span>
+      <span class="badge badge-violet">Sick Leave</span>
+    </div>
+    <h1 class="case-hero-title">Request Leave — Sick Leave Submission &amp; Approval</h1>
+    <p class="case-hero-desc">Validates the complete sick leave request and approval workflow: the HR operator proxies as the employee to submit a sick leave request, then proxies as the manager to approve it, and confirms both future and past leave records are correctly updated after approval.</p>
+    <div class="exec-bar">
+      <div class="exec-item"><div class="exec-label">POC Reference</div><div class="exec-value" style="font-family:monospace;color:#93c5fd;">POC:1281</div></div>
+      <div class="exec-item"><div class="exec-label">Assertions</div><div class="exec-value"><span class="assert-pill assert-pill-green">8 Passed / 0 Failed</span></div></div>
+      <div class="exec-item"><div class="exec-label">Duration</div><div class="exec-value" style="font-family:monospace;">00:03:05</div></div>
+      <div class="exec-item"><div class="exec-label">Executed</div><div class="exec-value">2026-05-21</div></div>
+      <div class="exec-item"><div class="exec-label">Automation</div><div class="exec-value">UiPath RPA (BDD)</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="case-layout">
+    <div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-blue">🎯</div><div class="cs-title">Test Objective</div></div>
+        <div class="cs-body">
+          <p style="font-size:0.875rem;color:#334155;line-height:1.75;">Validate that a sick leave request can be submitted on behalf of an employee and approved by the designated manager within SAP SuccessFactors Time Management. The test verifies the full proxy-based workflow: leave submission, manager approval, and post-approval confirmation of both future leave entitlements and past leave transaction records to ensure accurate leave balance management.</p>
+          <div style="margin-top:1rem;display:flex;flex-wrap:wrap;gap:0.5rem;">
+            <span style="font-size:0.72rem;font-weight:600;background:#eff6ff;color:#1d4ed8;padding:3px 10px;border-radius:6px;border:1px solid #dbeafe;">Sick Leave Request</span>
+            <span style="font-size:0.72rem;font-weight:600;background:#ecfdf5;color:#065f46;padding:3px 10px;border-radius:6px;border:1px solid #d1fae5;">Manager Approval</span>
+            <span style="font-size:0.72rem;font-weight:600;background:#f5f3ff;color:#6d28d9;padding:3px 10px;border-radius:6px;border:1px solid #ede9fe;">Leave Balance Verification</span>
+            <span style="font-size:0.72rem;font-weight:600;background:#fffbeb;color:#92400e;padding:3px 10px;border-radius:6px;border:1px solid #fef3c7;">Proxy Multi-Role</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-amber">📋</div><div class="cs-title">Prerequisites</div></div>
+        <div class="cs-body">
+          <div class="prereq-list">
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">Target employee has an active leave entitlement for Sick Leave (SL) type with sufficient balance for the requested dates</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">HR operator has proxy capability for both the employee and the designated approving manager</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">Leave request dates, leave type (Sick Leave), and employee identifier loaded in UiPath Data Service</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">Approving manager is configured as the leave approver for the target employee in the organisational hierarchy</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">Leave management module is active and accessible for the employee's legal entity and employee group</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-violet">🔬</div><div class="cs-title">Test Steps</div></div>
+        <div class="cs-body">
+          <div class="steps">
+
+            <div class="step">
+              <div class="step-num s-given">1</div>
+              <div class="step-content">
+                <span class="step-phase sp-given">GIVEN</span>
+                <div class="step-title">System Authentication</div>
+                <div class="step-desc">Log in to SAP SuccessFactors using RPA service account credentials retrieved from UiPath Orchestrator. Verify the home dashboard loads before proceeding with proxy actions.</div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">2</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Proxy as Employee — Navigate to Leave Request</div>
+                <div class="step-desc">Proxy into the designated employee's account. Navigate to Time Management → Absence → Request Leave (or equivalent path). Verify the leave request form is accessible and the employee's current leave balance is displayed.</div>
+                <div class="step-verify"><span class="sv-item">✓ Proxy to Employee successful</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">3</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Submit Sick Leave Request</div>
+                <div class="step-desc">On the leave request form: (1) Select Leave Type = <strong>Sick Leave (SL)</strong> from the dropdown, (2) Enter the leave start date and end date from test data, (3) Confirm the system calculates the number of leave days correctly (excluding weekends/public holidays), (4) Add any mandatory comments or attachments required for sick leave. Click Submit to send the request for approval.</div>
+                <div class="step-verify"><span class="sv-item">✓ Sick Leave Request Submitted</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">4</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Proxy as Approving Manager</div>
+                <div class="step-desc">Switch proxy to the designated approving manager. Navigate to the approval inbox (Team Absence or Workflow Inbox). Locate the pending sick leave request for the target employee. Review the request details: employee name, leave type, dates, and number of days.</div>
+                <div class="step-verify"><span class="sv-item">✓ Proxy to Approver successful</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">5</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Approve Leave Request</div>
+                <div class="step-desc">Review all leave request details in the approval form. Click <strong>Approve</strong>. Verify the system displays an approval confirmation message and the request status changes from "Pending" to "Approved".</div>
+                <div class="step-verify"><span class="sv-item">✓ Leave Approved</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-then">6</div>
+              <div class="step-content">
+                <span class="step-phase sp-then">THEN</span>
+                <div class="step-title">Return Proxy to Employee — Capture Future Leaves</div>
+                <div class="step-desc">Switch proxy back to the employee's account. Navigate to the Leave Overview or Absence Calendar. Capture a screenshot of the employee's <strong>future leave</strong> schedule, confirming the approved sick leave dates appear as booked/approved in the upcoming leave view.</div>
+                <div class="step-verify"><span class="sv-item">✓ Return Proxy to Employee</span><span class="sv-item">✓ Future Leaves Captured</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-then">7</div>
+              <div class="step-content">
+                <span class="step-phase sp-then">THEN</span>
+                <div class="step-title">Capture Past Leave Records</div>
+                <div class="step-desc">Navigate to the Leave History or Absence History section. Capture a screenshot of the employee's <strong>past leave</strong> records, confirming the sick leave transaction is listed with status "Approved" and the correct deduction from the leave balance is shown.</div>
+                <div class="step-verify"><span class="sv-item">✓ Past Leaves Captured</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-then">8</div>
+              <div class="step-content">
+                <span class="step-phase sp-then">THEN</span>
+                <div class="step-title">Confirm Sick Leave Requested and Approved</div>
+                <div class="step-desc">Perform final verification: (1) Leave request status shows "Approved", (2) Leave balance for Sick Leave type reflects the deduction, (3) Both future leave calendar and past leave history show the correct records. Capture final confirmation screenshot as test evidence.</div>
+                <div class="step-verify"><span class="sv-item">✓ Sick Leave Requested and Approved — Confirmed</span></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-green">✅</div><div class="cs-title">Expected Results</div></div>
+        <div class="cs-body">
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            <div style="display:flex;gap:0.75rem;padding:0.875rem 1rem;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;">
+              <span>✅</span>
+              <div><strong style="font-size:0.8rem;color:#065f46;">Sick leave request submitted without errors</strong><div style="font-size:0.8rem;color:#374151;margin-top:2px;">Leave type, dates, and day count are accepted by the system. The request is queued for manager approval.</div></div>
+            </div>
+            <div style="display:flex;gap:0.75rem;padding:0.875rem 1rem;background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;">
+              <span>🔄</span>
+              <div><strong style="font-size:0.8rem;color:#1e40af;">Manager approves in a single action</strong><div style="font-size:0.8rem;color:#374151;margin-top:2px;">The leave request is visible in the manager's approval inbox and can be approved without errors.</div></div>
+            </div>
+            <div style="display:flex;gap:0.75rem;padding:0.875rem 1rem;background:#f5f3ff;border:1px solid #ddd6fe;border-radius:10px;">
+              <span>📋</span>
+              <div><strong style="font-size:0.8rem;color:#4c1d95;">Leave records updated correctly</strong><div style="font-size:0.8rem;color:#374151;margin-top:2px;">Both future leave calendar and past leave history reflect the approved sick leave. The SL balance is correctly deducted.</div></div>
+            </div>
+            <div style="display:flex;gap:0.75rem;padding:0.875rem 1rem;background:#fefce8;border:1px solid #fef08a;border-radius:10px;">
+              <span>📊</span>
+              <div><strong style="font-size:0.8rem;color:#713f12;">All 8 assertions pass (8/8).</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-slate">📊</div><div class="cs-title">Assertion Summary — 8 Passed / 0 Failed</div></div>
+        <div style="overflow-x:auto;">
+          <table class="assert-table">
+            <thead><tr><th>#</th><th>Assertion Name</th><th>Type</th><th>Result</th></tr></thead>
+            <tbody>
+              <tr><td><span class="assert-num">1</span></td><td>Proxy to Employee</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">2</span></td><td>Request Sick Leave</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">3</span></td><td>Proxy to Approver</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">4</span></td><td>Approve Leave Request</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">5</span></td><td>Return Proxy to Employee</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">6</span></td><td>Capture Future Leaves</td><td style="color:#94a3b8;font-size:0.775rem;">Screenshot</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">7</span></td><td>Capture Past Leaves</td><td style="color:#94a3b8;font-size:0.775rem;">Screenshot</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">8</span></td><td>Sick Leave Requested and Approved — Confirmed</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-blue">📸</div><div class="cs-title">Execution Screenshots</div></div>
+        <div class="cs-body">
+          <div class="screenshots-grid">
+            <div><div class="img-placeholder"><div class="img-placeholder-icon">🖼️</div><div class="img-placeholder-text">Leave Request Form — Sick Leave Submitted</div></div><div class="img-caption">Assertion 2 — SL request submitted</div></div>
+            <div><div class="img-placeholder"><div class="img-placeholder-icon">🖼️</div><div class="img-placeholder-text">Future Leave Calendar — SL Booked</div></div><div class="img-caption">Assertion 6 — Future leaves captured</div></div>
+            <div><div class="img-placeholder"><div class="img-placeholder-icon">🖼️</div><div class="img-placeholder-text">Leave History — SL Approved Record</div></div><div class="img-caption">Assertion 7 — Past leaves captured</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div>
+      <div class="sidebar-card">
+        <div class="sidebar-title">Case Information</div>
+        <div class="sidebar-row"><div class="sr-label">Module</div><div class="sr-value">Time Management</div></div>
+        <div class="sidebar-row"><div class="sr-label">Case ID</div><div class="sr-value" style="font-family:monospace;color:#2563eb;font-weight:700;">TIME-009</div></div>
+        <div class="sidebar-row"><div class="sr-label">POC Reference</div><div class="sr-value" style="font-family:monospace;">POC:1281</div></div>
+        <div class="sidebar-row"><div class="sr-label">Leave Type</div><div class="sr-value">Sick Leave (SL)</div></div>
+        <div class="sidebar-row"><div class="sr-label">Test Type</div><div class="sr-value">End-to-End Functional</div></div>
+        <div class="sidebar-row"><div class="sr-label">Automation</div><div class="sr-value">UiPath RPA (BDD)</div></div>
+      </div>
+      <div class="sidebar-card" style="margin-top:1rem;">
+        <div class="sidebar-title">Execution Summary</div>
+        <div class="sidebar-row"><div class="sr-label">Last Executed</div><div class="sr-value">2026-05-21</div></div>
+        <div class="sidebar-row"><div class="sr-label">Duration</div><div class="sr-value" style="font-family:monospace;font-weight:700;">00:03:05</div></div>
+        <div class="sidebar-row"><div class="sr-label">Total Assertions</div><div class="sr-value">8</div></div>
+        <div class="sidebar-row"><div class="sr-label">Passed</div><div class="sr-value"><span style="color:#059669;font-weight:700;">● 8</span></div></div>
+        <div class="sidebar-row"><div class="sr-label">Failed</div><div class="sr-value">0</div></div>
+        <div class="sidebar-row"><div class="sr-label">Status</div><div class="sr-value"><span class="badge badge-passed">Passed</span></div></div>
+      </div>
+      <div class="sidebar-card" style="margin-top:1rem;">
+        <div class="sidebar-title">Related Cases</div>
+        <div class="sidebar-row" style="flex-direction:row;align-items:center;justify-content:space-between;">
+          <div><div class="sr-label">TIME-001</div><div class="sr-value" style="font-size:0.78rem;">Enter Overtime (OT)</div></div>
+          <a href="time-001.html" style="color:#2563eb;font-size:0.775rem;font-weight:600;text-decoration:none;">View →</a>
+        </div>
+        <div class="sidebar-row" style="flex-direction:row;align-items:center;justify-content:space-between;">
+          <div><div class="sr-label">EC-007</div><div class="sr-value" style="font-size:0.78rem;">Promotion Management</div></div>
+          <a href="ec-007.html" style="color:#2563eb;font-size:0.775rem;font-weight:600;text-decoration:none;">View →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left"><div class="nav-logo-icon">SF</div><span class="footer-name">SF Testing Platform</span></div>
+      <div class="footer-right">SAP SuccessFactors Automated Testing &nbsp;·&nbsp; SF Release Testing &nbsp;·&nbsp; 2026</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

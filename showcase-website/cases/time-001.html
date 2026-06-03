@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TIME-001 Enter Overtime — SF Testing Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><div class="nav-logo-icon">SF</div>SF Testing Platform</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Overview</a></li>
+      <li><a href="../modules/ec.html">EC Module</a></li>
+      <li><a href="../modules/time.html" class="active"><span class="nav-dot"></span>Time Module</a></li>
+      <li><a href="../modules/lms.html">LMS Module</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="case-hero">
+  <div class="container case-hero-inner">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a><span class="breadcrumb-sep">›</span>
+      <a href="../modules/time.html">Time Module</a><span class="breadcrumb-sep">›</span>
+      <span style="color:rgba(255,255,255,0.75);">TIME-001</span>
+    </div>
+    <div class="case-hero-meta">
+      <span class="case-hero-id">TIME-001</span>
+      <span class="badge badge-passed">Passed</span>
+      <span class="badge badge-blue">Time Management</span>
+    </div>
+    <h1 class="case-hero-title">Enter Overtime — OT Recording and Approval</h1>
+    <p class="case-hero-desc">Validates the complete overtime recording and approval process: the HR operator proxies as an employee to record OT hours, then proxies as the line manager to approve the OT request, confirming the approved record is visible in the Time Sheet.</p>
+    <div class="exec-bar">
+      <div class="exec-item"><div class="exec-label">POC Reference</div><div class="exec-value" style="font-family:monospace;color:#93c5fd;">POC:1056</div></div>
+      <div class="exec-item"><div class="exec-label">Assertions</div><div class="exec-value"><span class="assert-pill assert-pill-green">5 Passed / 0 Failed</span></div></div>
+      <div class="exec-item"><div class="exec-label">Duration</div><div class="exec-value" style="font-family:monospace;">00:02:39</div></div>
+      <div class="exec-item"><div class="exec-label">Executed</div><div class="exec-value">2026-05-21</div></div>
+      <div class="exec-item"><div class="exec-label">Automation</div><div class="exec-value">UiPath RPA (BDD)</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="case-layout">
+    <div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-blue">🎯</div><div class="cs-title">Test Objective</div></div>
+        <div class="cs-body">
+          <p style="font-size:0.875rem;color:#334155;line-height:1.75;">Validate the end-to-end overtime recording and single-step manager approval process in SAP SuccessFactors Time Management. The test verifies that OT hours can be entered into an employee's Time Sheet, the OT record is captured before approval, the manager can approve the OT request, and the approved record is correctly reflected in the system.</p>
+          <div style="margin-top:1rem;display:flex;flex-wrap:wrap;gap:0.5rem;">
+            <span style="font-size:0.72rem;font-weight:600;background:#eff6ff;color:#1d4ed8;padding:3px 10px;border-radius:6px;border:1px solid #dbeafe;">Overtime Recording</span>
+            <span style="font-size:0.72rem;font-weight:600;background:#ecfdf5;color:#065f46;padding:3px 10px;border-radius:6px;border:1px solid #d1fae5;">Manager Approval</span>
+            <span style="font-size:0.72rem;font-weight:600;background:#fffbeb;color:#92400e;padding:3px 10px;border-radius:6px;border:1px solid #fef3c7;">Time Sheet Verification</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-amber">📋</div><div class="cs-title">Prerequisites</div></div>
+        <div class="cs-body">
+          <div class="prereq-list">
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">Target employee has an active Time Sheet for the test period with OT recording enabled for their employee group</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">HR operator account has proxy capability for both the employee and the designated manager</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">OT date and hours to be recorded are loaded in UiPath Data Service as test parameters</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">Manager is configured as the direct approver for the employee's OT requests</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-violet">🔬</div><div class="cs-title">Test Steps</div></div>
+        <div class="cs-body">
+          <div class="steps">
+
+            <div class="step">
+              <div class="step-num s-given">1</div>
+              <div class="step-content">
+                <span class="step-phase sp-given">GIVEN</span>
+                <div class="step-title">System Authentication</div>
+                <div class="step-desc">Log in to SAP SuccessFactors with RPA service account. Retrieve credentials from Orchestrator. Verify home page loads.</div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">2</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Proxy as Employee — Navigate to Time Sheet</div>
+                <div class="step-desc">Proxy into the designated employee's account. Navigate to Time Management → Time Sheet. Open the current period's Time Sheet. Verify the sheet is editable.</div>
+                <div class="step-verify"><span class="sv-item">✓ Proxy to Employee successful</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">3</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Record OT Hours</div>
+                <div class="step-desc">Locate the target OT date in the Time Sheet grid. Select the OT time type from the dropdown. Enter the OT hours from test data. Add any required comments. Click Save to record the OT entry. Capture the pre-approval state of the OT record as evidence.</div>
+                <div class="step-verify"><span class="sv-item">✓ OT Record Captured (before approval)</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">4</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Proxy as Manager — Approve OT Request</div>
+                <div class="step-desc">Switch proxy to the employee's line manager. Navigate to the Time Management approval inbox or Team Time Management. Locate the pending OT approval request for the target employee. Review the OT entry details (date, hours, type). Click Approve.</div>
+                <div class="step-verify"><span class="sv-item">✓ Proxy to Manager successful</span><span class="sv-item">✓ OT Approval Successful</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-then">5</div>
+              <div class="step-content">
+                <span class="step-phase sp-then">THEN</span>
+                <div class="step-title">Verify Approved OT Record</div>
+                <div class="step-desc">Return to the employee's Time Sheet (proxy back if necessary). Verify the OT entry status has changed to "Approved". Capture a screenshot of the approved OT record as test evidence.</div>
+                <div class="step-verify"><span class="sv-item">✓ Approved OT Record Captured</span></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-green">✅</div><div class="cs-title">Expected Results</div></div>
+        <div class="cs-body">
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            <div style="display:flex;gap:0.75rem;padding:0.875rem 1rem;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;"><span>✅</span><div><strong style="font-size:0.8rem;color:#065f46;">OT hours recorded without validation error</strong><div style="font-size:0.8rem;color:#374151;margin-top:2px;">The OT time entry is saved in the Time Sheet with correct date, hours, and time type.</div></div></div>
+            <div style="display:flex;gap:0.75rem;padding:0.875rem 1rem;background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;"><span>✅</span><div><strong style="font-size:0.8rem;color:#1e40af;">Manager approval processed successfully</strong><div style="font-size:0.8rem;color:#374151;margin-top:2px;">The approval request is visible to the manager and can be approved in a single action.</div></div></div>
+            <div style="display:flex;gap:0.75rem;padding:0.875rem 1rem;background:#fefce8;border:1px solid #fef08a;border-radius:10px;"><span>📊</span><div><strong style="font-size:0.8rem;color:#713f12;">OT record status = Approved. All 5 assertions pass (5/5).</strong></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-slate">📊</div><div class="cs-title">Assertion Summary — 5 Passed / 0 Failed</div></div>
+        <div style="overflow-x:auto;">
+          <table class="assert-table">
+            <thead><tr><th>#</th><th>Assertion Name</th><th>Type</th><th>Result</th></tr></thead>
+            <tbody>
+              <tr><td><span class="assert-num">1</span></td><td>Proxy to Employee</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">2</span></td><td>OT Record Captured (before approval)</td><td style="color:#94a3b8;font-size:0.775rem;">Screenshot</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">3</span></td><td>Proxy to Manager</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">4</span></td><td>OT Approval Successful</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">5</span></td><td>Approved OT Record Captured</td><td style="color:#94a3b8;font-size:0.775rem;">Screenshot</td><td><span class="badge badge-passed">Passed</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-blue">📸</div><div class="cs-title">Execution Screenshots</div></div>
+        <div class="cs-body">
+          <div class="screenshots-grid">
+            <div><div class="img-placeholder"><div class="img-placeholder-icon">🖼️</div><div class="img-placeholder-text">Time Sheet — OT Entry (Pending)</div></div><div class="img-caption">Assertion 2 — Before approval</div></div>
+            <div><div class="img-placeholder"><div class="img-placeholder-icon">🖼️</div><div class="img-placeholder-text">Time Sheet — OT Entry (Approved)</div></div><div class="img-caption">Assertion 5 — After approval</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div>
+      <div class="sidebar-card">
+        <div class="sidebar-title">Case Information</div>
+        <div class="sidebar-row"><div class="sr-label">Module</div><div class="sr-value">Time Management</div></div>
+        <div class="sidebar-row"><div class="sr-label">Case ID</div><div class="sr-value" style="font-family:monospace;color:#2563eb;font-weight:700;">TIME-001</div></div>
+        <div class="sidebar-row"><div class="sr-label">POC Reference</div><div class="sr-value" style="font-family:monospace;">POC:1056</div></div>
+        <div class="sidebar-row"><div class="sr-label">Test Type</div><div class="sr-value">End-to-End Functional</div></div>
+        <div class="sidebar-row"><div class="sr-label">Automation</div><div class="sr-value">UiPath RPA (BDD)</div></div>
+      </div>
+      <div class="sidebar-card" style="margin-top:1rem;">
+        <div class="sidebar-title">Execution Summary</div>
+        <div class="sidebar-row"><div class="sr-label">Last Executed</div><div class="sr-value">2026-05-21</div></div>
+        <div class="sidebar-row"><div class="sr-label">Duration</div><div class="sr-value" style="font-family:monospace;font-weight:700;">00:02:39</div></div>
+        <div class="sidebar-row"><div class="sr-label">Total Assertions</div><div class="sr-value">5</div></div>
+        <div class="sidebar-row"><div class="sr-label">Passed</div><div class="sr-value"><span style="color:#059669;font-weight:700;">● 5</span></div></div>
+        <div class="sidebar-row"><div class="sr-label">Failed</div><div class="sr-value">0</div></div>
+        <div class="sidebar-row"><div class="sr-label">Status</div><div class="sr-value"><span class="badge badge-passed">Passed</span></div></div>
+      </div>
+      <div class="sidebar-card" style="margin-top:1rem;">
+        <div class="sidebar-title">Related Cases</div>
+        <div class="sidebar-row" style="flex-direction:row;align-items:center;justify-content:space-between;"><div><div class="sr-label">TIME-009</div><div class="sr-value" style="font-size:0.78rem;">Request Leave (SL)</div></div><a href="time-009.html" style="color:#2563eb;font-size:0.775rem;font-weight:600;text-decoration:none;">View →</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer"><div class="container"><div class="footer-inner"><div class="footer-left"><div class="nav-logo-icon">SF</div><span class="footer-name">SF Testing Platform</span></div><div class="footer-right">SAP SuccessFactors Automated Testing · SF Release Testing · 2026</div></div></div></footer>
+</body>
+</html>

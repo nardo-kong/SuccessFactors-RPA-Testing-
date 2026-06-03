@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EC-008 New Hire (MCN) — SF Testing Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><div class="nav-logo-icon">SF</div>SF Testing Platform</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Overview</a></li>
+      <li><a href="../modules/ec.html" class="active"><span class="nav-dot"></span> EC Module</a></li>
+      <li><a href="../modules/time.html">Time Module</a></li>
+      <li><a href="../modules/lms.html">LMS Module</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="case-hero">
+  <div class="container case-hero-inner">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a><span class="breadcrumb-sep">›</span>
+      <a href="../modules/ec.html">EC Module</a><span class="breadcrumb-sep">›</span>
+      <span style="color:rgba(255,255,255,0.75);">EC-008</span>
+    </div>
+    <div class="case-hero-meta">
+      <span class="case-hero-id">EC-008</span>
+      <span class="badge badge-passed">Passed</span>
+      <span class="badge badge-blue">Employee Central</span>
+      <span class="badge badge-violet">Mainland China</span>
+    </div>
+    <h1 class="case-hero-title">New Hire Onboarding — Mainland China (MCN)</h1>
+    <p class="case-hero-desc">Validates the complete new employee onboarding workflow for the Mainland China legal entity, covering all personal data sections, national ID entry, MCN-specific address fields, bank account, compensation, and the post-submission approval and employee ID creation process.</p>
+    <div class="exec-bar">
+      <div class="exec-item"><div class="exec-label">Module</div><div class="exec-value">Employee Central</div></div>
+      <div class="exec-item"><div class="exec-label">POC Reference</div><div class="exec-value" style="font-family:monospace;color:#93c5fd;">POC:2184</div></div>
+      <div class="exec-item"><div class="exec-label">Assertions</div><div class="exec-value"><span class="assert-pill assert-pill-green">25 Passed / 0 Failed</span></div></div>
+      <div class="exec-item"><div class="exec-label">Duration</div><div class="exec-value" style="font-family:monospace;">00:09:08</div></div>
+      <div class="exec-item"><div class="exec-label">Executed</div><div class="exec-value">2026-05-21</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="case-layout">
+    <div>
+
+      <!-- OBJECTIVE -->
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-blue">🎯</div><div class="cs-title">Test Objective</div></div>
+        <div class="cs-body">
+          <p style="font-size:0.875rem;color:#334155;line-height:1.75;">Validate the end-to-end new hire creation process for the Mainland China (MCN) legal entity. The test confirms that all mandatory personal, employment, and compensation data sections can be populated correctly, that the new hire workflow is successfully submitted and approved, and that a valid Employee ID is generated upon approval. MCN-specific data requirements — including national ID type (CHN Resident Identity Card), CN/EN dual-name input, CNY currency, and Province/City/District address hierarchy — are specifically exercised in this test case.</p>
+          <div style="margin-top:1rem;display:flex;flex-wrap:wrap;gap:0.5rem;">
+            <span style="font-size:0.72rem;font-weight:600;background:#eff6ff;color:#1d4ed8;padding:3px 10px;border-radius:6px;border:1px solid #dbeafe;">New Hire Workflow</span>
+            <span style="font-size:0.72rem;font-weight:600;background:#f5f3ff;color:#6d28d9;padding:3px 10px;border-radius:6px;border:1px solid #ede9fe;">MCN Legal Entity</span>
+            <span style="font-size:0.72rem;font-weight:600;background:#ecfdf5;color:#065f46;padding:3px 10px;border-radius:6px;border:1px solid #d1fae5;">Employee ID Generation</span>
+            <span style="font-size:0.72rem;font-weight:600;background:#fffbeb;color:#92400e;padding:3px 10px;border-radius:6px;border:1px solid #fef3c7;">Proxy Multi-Role</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PREREQUISITES -->
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-amber">📋</div><div class="cs-title">Prerequisites</div></div>
+        <div class="cs-body">
+          <div class="prereq-list">
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">A vacant, active position exists in the Mainland China org chart for the new hire to be mapped to</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">HR Manager, HR Deputy Manager, and Senior HR Officer accounts exist with appropriate permissions and proxy capability</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">New hire personal data prepared: full CN/EN legal name, national ID number, address (Province/City/District), phone, email, emergency contact, bank account</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">Job and compensation configuration for MCN legal entity is complete (pay grade, CNY currency, pay component)</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">New hire approval workflow is configured with HR Approver as the approver for new hire requests</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">Employee ID number range for MCN is configured and available in SAP SuccessFactors</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TEST STEPS -->
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-violet">🔬</div><div class="cs-title">Test Steps</div></div>
+        <div class="cs-body">
+          <div class="steps">
+
+            <div class="step">
+              <div class="step-num s-given">1</div>
+              <div class="step-content">
+                <span class="step-phase sp-given">GIVEN</span>
+                <div class="step-title">System Authentication</div>
+                <div class="step-desc">Navigate to the SAP SuccessFactors tenant URL. Retrieve automation credentials from UiPath Orchestrator. Complete login and verify successful session establishment.</div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-given">2</div>
+              <div class="step-content">
+                <span class="step-phase sp-given">GIVEN</span>
+                <div class="step-title">Proxy as HR Manager — Verify Position Exists</div>
+                <div class="step-desc">Proxy as the HR Manager (Shared Services). Navigate to Position Org Chart and search for the target vacant position by position code. Verify the position status is Active and Vacant.</div>
+                <div class="step-verify"><span class="sv-item">✓ Proxy to HR Manager successful</span><span class="sv-item">✓ Position verified as Active/Vacant</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-given">3</div>
+              <div class="step-content">
+                <span class="step-phase sp-given">GIVEN</span>
+                <div class="step-title">Proxy as HR Deputy Manager — Confirm Position</div>
+                <div class="step-desc">Switch proxy context to the HR Deputy Manager. Re-confirm the position exists and is eligible for new hire assignment. This step simulates the pre-hire position verification by a secondary HR role.</div>
+                <div class="step-verify"><span class="sv-item">✓ Proxy to HR Deputy Manager successful</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">4</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Proxy as Senior HR Officer — Initiate New Hire</div>
+                <div class="step-desc">Switch proxy to the Senior HR Officer who will perform data entry. Navigate to Admin Center → Manage New Hires → Add New Employee to launch the new hire wizard.</div>
+                <div class="step-verify"><span class="sv-item">✓ Proxy to Senior HR Officer successful</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">5</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Enter Basic Employment Data</div>
+                <div class="step-desc">In the new hire wizard, select Legal Entity: <strong>Mainland China</strong>. Enter Hire Date, Employee Class, and Position code. The system auto-populates department, division, and reporting line from the position configuration.</div>
+                <div class="step-verify"><span class="sv-item">✓ Basic Data Saved</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">6</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Enter Name Information</div>
+                <div class="step-desc">In the Personal Info section, enter the employee's legal full name in both Chinese characters (Legal Chinese Name) and English (Legal English Name). First name, last name, and preferred name fields are all populated per MCN requirements.</div>
+                <div class="step-verify"><span class="sv-item">✓ Name Saved</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">7</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Enter National ID</div>
+                <div class="step-desc">Select ID Type: <strong>CHN Resident Identity Card</strong>. Enter the national ID number. Set the country of issue and confirm the ID record. This is a mandatory field for MCN employees and triggers specific validations in SAP SuccessFactors.</div>
+                <div class="step-verify"><span class="sv-item">✓ National ID Saved</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">8</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Enter Gender and Marital Status</div>
+                <div class="step-desc">Select the employee's gender and marital status from the configured dropdown values. These fields are required for MCN payroll and compliance reporting.</div>
+                <div class="step-verify"><span class="sv-item">✓ Gender and Marital Status Saved</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">9</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Enter Contact Information</div>
+                <div class="step-desc">Enter the employee's business email address and mobile phone number. Email is validated for format; phone is entered with country code prefix.</div>
+                <div class="step-verify"><span class="sv-item">✓ Email Saved</span><span class="sv-item">✓ Phone Saved</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">10</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Enter Residential Address (MCN Hierarchy)</div>
+                <div class="step-desc">Select Residential address fields using the MCN-specific hierarchical structure: Province → City → District → Street / Detailed Address. This three-tier geographic hierarchy is unique to Mainland China entities.</div>
+                <div class="step-verify"><span class="sv-item">✓ Residential Address Saved</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">11</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Enter Correspondent Address</div>
+                <div class="step-desc">Enter the employee's correspondent (mailing) address. If the same as residential, the system allows copying. A different address is entered to verify independent storage of both address types.</div>
+                <div class="step-verify"><span class="sv-item">✓ Correspondent Address Saved</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">12</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Enter Emergency Contact</div>
+                <div class="step-desc">Add emergency contact record: name, relationship, and phone number. This is a mandatory data section before the new hire record can be submitted.</div>
+                <div class="step-verify"><span class="sv-item">✓ Emergency Contact Saved</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">13</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Enter Bank Account Details</div>
+                <div class="step-desc">Enter the employee's payroll bank account: bank name (selected from MCN bank list), bank branch, account number, and account holder name. CNY is auto-selected for MCN legal entity.</div>
+                <div class="step-verify"><span class="sv-item">✓ Bank Account Saved</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">14</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Enter Job Information</div>
+                <div class="step-desc">Confirm job information fields: Job Code, Department, Division, Location, and Employment Type. These may be auto-populated from the position but must be verified and confirmed before submission.</div>
+                <div class="step-verify"><span class="sv-item">✓ Job Information Saved</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">15</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Enter Compensation Information</div>
+                <div class="step-desc">Enter the employee's compensation: Pay Grade, Pay Component (e.g., Base Salary), amount, and frequency. Currency is CNY for MCN entity. Confirm the compensation record is saved.</div>
+                <div class="step-verify"><span class="sv-item">✓ Compensation Saved</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">16</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Submit New Hire Request</div>
+                <div class="step-desc">Review all completed sections. Click "Submit" to initiate the new hire workflow. The system retrieves and displays the approval chain. Verify the approver list is populated correctly.</div>
+                <div class="step-verify"><span class="sv-item">✓ Get Approvers</span><span class="sv-item">✓ New hire workflow created</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-when">17</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Proxy as HR Approver — Approve New Hire</div>
+                <div class="step-desc">Proxy as the configured HR Approver. Navigate to the workflow inbox and locate the new hire approval request. Review all data sections and click Approve. The system processes the approval and triggers Employee ID generation.</div>
+                <div class="step-verify"><span class="sv-item">✓ Proxy to HR Approver</span><span class="sv-item">✓ New hire approved</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-then">18</div>
+              <div class="step-content">
+                <span class="step-phase sp-then">THEN</span>
+                <div class="step-title">Verify Employee ID Generated</div>
+                <div class="step-desc">After approval, the system auto-assigns an Employee ID from the configured number range. Navigate to the new employee's profile and verify that a valid, unique Employee ID is displayed.</div>
+                <div class="step-verify"><span class="sv-item">✓ Employee ID Created</span></div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num s-then">19</div>
+              <div class="step-content">
+                <span class="step-phase sp-then">THEN</span>
+                <div class="step-title">Screenshot Verification — All Profile Tabs</div>
+                <div class="step-desc">Navigate through the new employee's profile and capture screenshots of all key tabs: Personal Information, Employment Details, Job Information, and Leave Information. These screenshots serve as test evidence and are attached to the test result report.</div>
+                <div class="step-verify">
+                  <span class="sv-item">✓ Personal Information tab captured</span>
+                  <span class="sv-item">✓ Employment Details tab captured</span>
+                  <span class="sv-item">✓ Job Information tab captured</span>
+                  <span class="sv-item">✓ Leave Information tab captured</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- EXPECTED RESULTS -->
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-green">✅</div><div class="cs-title">Expected Results</div></div>
+        <div class="cs-body">
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:1rem;font-size:0.85rem;color:#166534;"><strong>All data sections saved:</strong> Each of the 12 personal and employment data sections is saved without validation errors. System displays a green confirmation indicator for each saved section.</div>
+            <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:1rem;font-size:0.85rem;color:#1e3a5f;"><strong>Workflow created and approved:</strong> The new hire workflow is generated with the correct approver, the approval is processed successfully, and the workflow status changes to "Completed".</div>
+            <div style="background:#f5f3ff;border:1px solid #ddd6fe;border-radius:10px;padding:1rem;font-size:0.85rem;color:#4c1d95;"><strong>Employee ID assigned:</strong> A unique Employee ID is auto-generated and visible in the employee profile after approval. The new employee record is fully active in the system.</div>
+            <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:1rem;font-size:0.85rem;color:#78350f;"><strong>All 25 assertions pass:</strong> Every assertion check in the test case returns a Passed result (25/25).</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ASSERTIONS TABLE -->
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-slate">📊</div><div class="cs-title">Assertion Summary — 25 Passed / 0 Failed</div></div>
+        <div style="overflow-x:auto;">
+          <table class="assert-table">
+            <thead><tr><th>#</th><th>Assertion Name</th><th>Type</th><th>Result</th></tr></thead>
+            <tbody>
+              <tr><td><span class="assert-num">1</span></td><td>Proxy to HR Manager (Shared Services)</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">2</span></td><td>Verify Position Exists</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">3</span></td><td>Proxy to HR Deputy Manager</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">4</span></td><td>Proxy to Senior HR Officer</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">5</span></td><td>Basic Data Saved</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">6</span></td><td>Name Saved</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">7</span></td><td>National ID Saved</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">8</span></td><td>Gender and Marital Status Saved</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">9</span></td><td>Email Saved</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">10</span></td><td>Phone Saved</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">11</span></td><td>Residential Address Saved</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">12</span></td><td>Correspondent Address Saved</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">13</span></td><td>Emergency Contact Saved</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">14</span></td><td>Bank Account Saved</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">15</span></td><td>Job Information Saved</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">16</span></td><td>Compensation Saved</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">17</span></td><td>Get Approvers</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">18</span></td><td>New hire workflow created successfully</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">19</span></td><td>Proxy to HR Approver</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">20</span></td><td>Approve new hire on behalf of HR Approver</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">21</span></td><td>Employee ID Created</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">22</span></td><td>Screenshot: Personal Information</td><td style="color:#94a3b8;font-size:0.775rem;">TakeScreenshot</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">23</span></td><td>Screenshot: Employment Details</td><td style="color:#94a3b8;font-size:0.775rem;">TakeScreenshot</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">24</span></td><td>Screenshot: Job Information</td><td style="color:#94a3b8;font-size:0.775rem;">TakeScreenshot</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">25</span></td><td>Screenshot: Leave Information</td><td style="color:#94a3b8;font-size:0.775rem;">TakeScreenshot</td><td><span class="badge badge-passed">Passed</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SCREENSHOTS -->
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-blue">📸</div><div class="cs-title">Execution Screenshots</div></div>
+        <div class="cs-body">
+          <div class="screenshots-grid">
+            <div><div class="img-placeholder"><div class="img-placeholder-icon">🖼️</div><div class="img-placeholder-text">Personal Information Tab</div></div><div class="img-caption">Assertion 22 — Personal Info verified</div></div>
+            <div><div class="img-placeholder"><div class="img-placeholder-icon">🖼️</div><div class="img-placeholder-text">Employment Details Tab</div></div><div class="img-caption">Assertion 23 — Employment verified</div></div>
+            <div><div class="img-placeholder"><div class="img-placeholder-icon">🖼️</div><div class="img-placeholder-text">Job Information Tab</div></div><div class="img-caption">Assertion 24 — Job info verified</div></div>
+            <div><div class="img-placeholder"><div class="img-placeholder-icon">🖼️</div><div class="img-placeholder-text">Leave Information Tab</div></div><div class="img-caption">Assertion 25 — Leave entitlement set</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <div>
+      <div class="sidebar-card">
+        <div class="sidebar-title">Case Information</div>
+        <div class="sidebar-row"><div class="sr-label">Module</div><div class="sr-value">Employee Central</div></div>
+        <div class="sidebar-row"><div class="sr-label">Case ID</div><div class="sr-value" style="font-family:monospace;color:#2563eb;font-weight:700;">EC-008</div></div>
+        <div class="sidebar-row"><div class="sr-label">POC Reference</div><div class="sr-value" style="font-family:monospace;">POC:2184</div></div>
+        <div class="sidebar-row"><div class="sr-label">Legal Entity</div><div class="sr-value">Mainland China (MCN)</div></div>
+        <div class="sidebar-row"><div class="sr-label">Test Type</div><div class="sr-value">End-to-End Functional</div></div>
+        <div class="sidebar-row"><div class="sr-label">Automation Engine</div><div class="sr-value">UiPath RPA (BDD)</div></div>
+      </div>
+      <div class="sidebar-card" style="margin-top:1rem;">
+        <div class="sidebar-title">Execution Summary</div>
+        <div class="sidebar-row"><div class="sr-label">Last Executed</div><div class="sr-value">2026-05-21</div></div>
+        <div class="sidebar-row"><div class="sr-label">Duration</div><div class="sr-value" style="font-family:monospace;font-weight:700;">00:09:08</div></div>
+        <div class="sidebar-row"><div class="sr-label">Total Assertions</div><div class="sr-value">25</div></div>
+        <div class="sidebar-row"><div class="sr-label">Passed</div><div class="sr-value"><span style="color:#059669;font-weight:700;">● 25</span></div></div>
+        <div class="sidebar-row"><div class="sr-label">Failed</div><div class="sr-value">0</div></div>
+        <div class="sidebar-row"><div class="sr-label">Status</div><div class="sr-value"><span class="badge badge-passed">Passed</span></div></div>
+      </div>
+      <div class="sidebar-card" style="margin-top:1rem;">
+        <div class="sidebar-title">Related Cases</div>
+        <div class="sidebar-row" style="flex-direction:row;align-items:center;justify-content:space-between;"><div><div class="sr-label">EC-007</div><div class="sr-value" style="font-size:0.78rem;">Promotion Management</div></div><a href="ec-007.html" style="color:#2563eb;font-size:0.775rem;font-weight:600;text-decoration:none;">View →</a></div>
+        <div class="sidebar-row" style="flex-direction:row;align-items:center;justify-content:space-between;"><div><div class="sr-label">EC-012</div><div class="sr-value" style="font-size:0.78rem;">Probation Management</div></div><a href="ec-012.html" style="color:#2563eb;font-size:0.775rem;font-weight:600;text-decoration:none;">View →</a></div>
+        <div class="sidebar-row" style="flex-direction:row;align-items:center;justify-content:space-between;"><div><div class="sr-label">EC-002</div><div class="sr-value" style="font-size:0.78rem;">Create Position</div></div><a href="ec-002.html" style="color:#2563eb;font-size:0.775rem;font-weight:600;text-decoration:none;">View →</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer"><div class="container"><div class="footer-inner"><div class="footer-left"><div class="nav-logo-icon">SF</div><span class="footer-name">SF Testing Platform</span></div><div class="footer-right">SAP SuccessFactors Automated Testing · SF Release Testing · 2026</div></div></div></footer>
+</body>
+</html>

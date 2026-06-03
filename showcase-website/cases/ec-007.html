@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EC-007 Promotion Management — SF Testing Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><div class="nav-logo-icon">SF</div>SF Testing Platform</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Overview</a></li>
+      <li><a href="../modules/ec.html" class="active"><span class="nav-dot"></span> EC Module</a></li>
+      <li><a href="../modules/time.html">Time Module</a></li>
+      <li><a href="../modules/lms.html">LMS Module</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- CASE HERO -->
+<section class="case-hero">
+  <div class="container case-hero-inner">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a><span class="breadcrumb-sep">›</span>
+      <a href="../modules/ec.html">EC Module</a><span class="breadcrumb-sep">›</span>
+      <span style="color:rgba(255,255,255,0.75);">EC-007</span>
+    </div>
+    <div class="case-hero-meta">
+      <span class="case-hero-id">EC-007</span>
+      <span class="badge badge-passed">Passed</span>
+      <span class="badge badge-blue">Employee Central</span>
+    </div>
+    <h1 class="case-hero-title">Promotion Management — Off-Cycle</h1>
+    <p class="case-hero-desc">Validates the end-to-end off-cycle promotion workflow: position and compensation changes are submitted, routed through a multi-level approval chain, and confirmed in the employee's employment history upon completion.</p>
+    <div class="exec-bar">
+      <div class="exec-item"><div class="exec-label">Module</div><div class="exec-value">Employee Central</div></div>
+      <div class="exec-item"><div class="exec-label">POC Reference</div><div class="exec-value" style="font-family:monospace;color:#93c5fd;">POC:1055</div></div>
+      <div class="exec-item"><div class="exec-label">Assertions</div><div class="exec-value"><span class="assert-pill assert-pill-green">11 Passed / 0 Failed</span></div></div>
+      <div class="exec-item"><div class="exec-label">Duration</div><div class="exec-value" style="font-family:monospace;">00:10:39</div></div>
+      <div class="exec-item"><div class="exec-label">Execution Type</div><div class="exec-value">Automated</div></div>
+      <div class="exec-item"><div class="exec-label">Executed</div><div class="exec-value">2026-05-21</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="case-layout">
+
+    <!-- LEFT MAIN CONTENT -->
+    <div>
+
+      <!-- TEST OBJECTIVE -->
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-blue">🎯</div><div class="cs-title">Test Objective</div></div>
+        <div class="cs-body">
+          <p style="font-size:0.875rem;color:#334155;line-height:1.75;">Validate that an off-cycle promotion request can be submitted through the SAP SuccessFactors interface, routed through the complete multi-level approval workflow, and that all position and compensation changes are accurately reflected in the employee's job history upon final approval.</p>
+          <div style="margin-top:1rem;display:flex;flex-wrap:wrap;gap:0.5rem;">
+            <span style="font-size:0.72rem;font-weight:600;background:#eff6ff;color:#1d4ed8;padding:3px 10px;border-radius:6px;border:1px solid #dbeafe;">Position Change</span>
+            <span style="font-size:0.72rem;font-weight:600;background:#f5f3ff;color:#6d28d9;padding:3px 10px;border-radius:6px;border:1px solid #ede9fe;">Compensation Update</span>
+            <span style="font-size:0.72rem;font-weight:600;background:#ecfdf5;color:#065f46;padding:3px 10px;border-radius:6px;border:1px solid #d1fae5;">Multi-Approver Workflow</span>
+            <span style="font-size:0.72rem;font-weight:600;background:#fffbeb;color:#92400e;padding:3px 10px;border-radius:6px;border:1px solid #fef3c7;">Employment History Verification</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PREREQUISITES -->
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-amber">📋</div><div class="cs-title">Prerequisites</div></div>
+        <div class="cs-body">
+          <div class="prereq-list">
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">Active employee record exists in the system with valid employment and compensation information</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">HR operator account has proxy capability enabled and permission to initiate job and compensation changes</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">Target position for the promotion is pre-created, active, and available in the Position Org Chart</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">Promotion approval workflow is configured with all required approvers and routing rules in place</div></div>
+            <div class="prereq-item"><div class="prereq-icon">✓</div><div class="prereq-text">Test data (employee identifier, target position, effective date, compensation amounts) loaded in Data Service</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TEST STEPS -->
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-violet">🔬</div><div class="cs-title">Test Steps</div></div>
+        <div class="cs-body">
+          <div class="steps">
+            <div class="step">
+              <div class="step-num s-given">1</div>
+              <div class="step-content">
+                <span class="step-phase sp-given">GIVEN</span>
+                <div class="step-title">System Authentication</div>
+                <div class="step-desc">Log in to SAP SuccessFactors via the configured tenant URL. RPA service account credentials are retrieved securely from the UiPath Orchestrator credential store at runtime.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num s-given">2</div>
+              <div class="step-content">
+                <span class="step-phase sp-given">GIVEN</span>
+                <div class="step-title">Proxy as HR Operator</div>
+                <div class="step-desc">Use the proxy function to adopt the identity of the designated HR Business Facing operator who will initiate the promotion request. Verify the proxy is active and correct user context is displayed in the system header.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num s-when">3</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Navigate to Employee Profile</div>
+                <div class="step-desc">Use the People search function to locate the target employee by their Employee ID. Open the full People Profile page and navigate to the General Information section.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num s-when">4</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Initiate Job Change Action</div>
+                <div class="step-desc">From the employee profile, select "Take Action" and choose "Change Job and Compensation Info". Set the effective date for the promotion as specified in the test data.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num s-when">5</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Update Target Position</div>
+                <div class="step-desc">In the Position Information section, select the new target position from the position picker. Confirm that the position details (title, code) are correctly populated. Save the position change.</div>
+                <div class="step-verify"><span class="sv-item">✓ Change Position Saved</span></div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num s-when">6</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Update Cash Allowance</div>
+                <div class="step-desc">In the Compensation section, update the Cash Allowance component to the new promotion amount as specified in the test data. Save the compensation change.</div>
+                <div class="step-verify"><span class="sv-item">✓ Change Allowance Saved</span></div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num s-when">7</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Submit Promotion Request</div>
+                <div class="step-desc">Review all populated fields including contract start date, Rostered/Non-Rostered status, and RTA flag. Click "Save" to generate the submission confirmation dialog. Confirm submission. The system retrieves the full approval chain. Capture and verify the approver list.</div>
+                <div class="step-verify"><span class="sv-item">✓ GetApprovalList</span></div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num s-when">8</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Approval — Step 1 (HR Business Facing)</div>
+                <div class="step-desc">Proxy as the first approver in the chain (HR Business Facing role). Navigate to pending workflow requests. Locate the promotion approval for the target employee. Review all position and compensation details. Click Approve.</div>
+                <div class="step-verify"><span class="sv-item">✓ Approver 1 Approval Successful</span></div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num s-when">9</div>
+              <div class="step-content">
+                <span class="step-phase sp-when">WHEN</span>
+                <div class="step-title">Approval — Steps 2 through 6 (Sequential)</div>
+                <div class="step-desc">Sequentially proxy as each of the remaining approvers in the workflow chain (Approvers 2–6, including IT Director, People &amp; Organisational Development lead, Quality Management head, HRSS Mobility, and CEO office). At each step: locate the pending request, review details, and approve. The system handles deduplication of approvers where the same person appears in multiple steps.</div>
+                <div class="step-verify">
+                  <span class="sv-item">✓ Approver 2 Successful</span>
+                  <span class="sv-item">✓ Approver 3 Successful</span>
+                  <span class="sv-item">✓ Approver 4 Successful</span>
+                  <span class="sv-item">✓ Approver 5 Successful</span>
+                  <span class="sv-item">✓ Approver 6 Successful</span>
+                </div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num s-then">10</div>
+              <div class="step-content">
+                <span class="step-phase sp-then">THEN</span>
+                <div class="step-title">Return to HR Operator Context &amp; Navigate to Profile</div>
+                <div class="step-desc">Proxy back to the original HR operator context. Navigate to the target employee's People Profile → Employment Information → Job Information section.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num s-then">11</div>
+              <div class="step-content">
+                <span class="step-phase sp-then">THEN</span>
+                <div class="step-title">Verify Promotion Completed in System</div>
+                <div class="step-desc">Open the Job Information history panel. Verify: (1) A new record dated with the promotion effective date is visible. (2) Position title shows the new promoted position. (3) Job classification fields reflect the new grade. (4) Pay Grade and Pay Grade Label are updated. (5) The workflow status is "Completed". Screenshot captured as evidence.</div>
+                <div class="step-verify"><span class="sv-item">✓ Promotion Finished</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXPECTED RESULTS -->
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-green">✅</div><div class="cs-title">Expected Results</div></div>
+        <div class="cs-body">
+          <div class="info-box ib-green"><div class="ib-icon">✅</div><div class="ib-content"><div class="ib-title">Position and Compensation Updated</div>The position change and cash allowance update are saved without any validation errors. All fields reflect the new promotion data.</div></div>
+          <div class="info-box ib-blue"><div class="ib-icon">🔄</div><div class="ib-content"><div class="ib-title">Complete Approval Chain Processed</div>The promotion request successfully routes through all configured approvers (6 total) without interruption. Duplicate approver steps are handled and skipped correctly.</div></div>
+          <div class="info-box ib-violet"><div class="ib-icon">📋</div><div class="ib-content"><div class="ib-title">Employment History Updated</div>The employee's Job Information History shows a new promotion record with the correct effective date, updated position title, grade, and pay grade label.</div></div>
+          <div class="info-box ib-amber"><div class="ib-icon">📊</div><div class="ib-content"><div class="ib-title">All Assertions Pass</div>All 11 assertion checks pass (11/11). Workflow status transitions to "Completed" after the final approval step.</div></div>
+        </div>
+      </div>
+
+      <!-- ASSERTIONS TABLE -->
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-slate">📊</div><div class="cs-title">Assertion Summary — 11 Passed / 0 Failed</div></div>
+        <div style="overflow-x:auto;">
+          <table class="assert-table">
+            <thead>
+              <tr><th>#</th><th>Assertion Name</th><th>Type</th><th>Result</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="assert-num">1</span></td><td>Login</td><td style="color:#94a3b8;font-size:0.775rem;">Login</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">2</span></td><td>Change Position Save</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">3</span></td><td>Change Allowance Save</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">4</span></td><td>GetApprovalList</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">5</span></td><td>Approver 1 — Approve the request successful</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">6</span></td><td>Approver 2 — Approve the request successful</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">7</span></td><td>Approver 3 — Approve the request successful</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">8</span></td><td>Approver 4 — Approve the request successful</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">9</span></td><td>Approver 5 — Approve the request successful</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">10</span></td><td>Approver 6 — Approve the request successful</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+              <tr><td><span class="assert-num">11</span></td><td>Promotion Finished</td><td style="color:#94a3b8;font-size:0.775rem;">VerifyExpression</td><td><span class="badge badge-passed">Passed</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SCREENSHOTS -->
+      <div class="cs">
+        <div class="cs-header"><div class="cs-icon cs-icon-blue">📸</div><div class="cs-title">Execution Screenshots</div></div>
+        <div class="cs-body">
+          <div class="info-box ib-blue" style="margin-bottom:1rem;"><div class="ib-icon">ℹ️</div><div class="ib-content">Screenshots below are captured automatically by the automation at key assertion points during test execution. Replace placeholder frames with actual exported images from UiPath Test Manager.</div></div>
+          <div class="screenshots-grid">
+            <div><div class="img-placeholder"><div class="img-placeholder-icon">🖼️</div><div class="img-placeholder-text">Screenshot: Position Change Submitted</div></div><div class="img-caption">Assertion 2 — Change Position Save</div></div>
+            <div><div class="img-placeholder"><div class="img-placeholder-icon">🖼️</div><div class="img-placeholder-text">Screenshot: Compensation Update Saved</div></div><div class="img-caption">Assertion 3 — Change Allowance Save</div></div>
+            <div><div class="img-placeholder"><div class="img-placeholder-icon">🖼️</div><div class="img-placeholder-text">Screenshot: Approval Workflow List</div></div><div class="img-caption">Assertion 4 — GetApprovalList</div></div>
+            <div><div class="img-placeholder"><div class="img-placeholder-icon">🖼️</div><div class="img-placeholder-text">Screenshot: Promotion Job History Record</div></div><div class="img-caption">Assertion 11 — Promotion Finished</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div>
+      <div class="sidebar-card">
+        <div class="sidebar-title">Case Information</div>
+        <div class="sidebar-row"><div class="sr-label">Module</div><div class="sr-value">Employee Central</div></div>
+        <div class="sidebar-row"><div class="sr-label">Case ID</div><div class="sr-value" style="font-family:monospace;color:#2563eb;font-weight:700;">EC-007</div></div>
+        <div class="sidebar-row"><div class="sr-label">POC Reference</div><div class="sr-value" style="font-family:monospace;">POC:1055</div></div>
+        <div class="sidebar-row"><div class="sr-label">Test Type</div><div class="sr-value">End-to-End Functional</div></div>
+        <div class="sidebar-row"><div class="sr-label">Automation Engine</div><div class="sr-value">UiPath RPA (BDD)</div></div>
+        <div class="sidebar-row"><div class="sr-label">Test Set</div><div class="sr-value">SF Release Testing</div></div>
+      </div>
+      <div class="sidebar-card" style="margin-top:1rem;">
+        <div class="sidebar-title">Execution Summary</div>
+        <div class="sidebar-row"><div class="sr-label">Last Executed</div><div class="sr-value">2026-05-21</div></div>
+        <div class="sidebar-row"><div class="sr-label">Start Time</div><div class="sr-value" style="font-family:monospace;">15:38:13</div></div>
+        <div class="sidebar-row"><div class="sr-label">Duration</div><div class="sr-value" style="font-family:monospace;font-weight:700;">00:10:39</div></div>
+        <div class="sidebar-row"><div class="sr-label">Total Assertions</div><div class="sr-value">11</div></div>
+        <div class="sidebar-row"><div class="sr-label">Passed</div><div class="sr-value"><span style="color:#059669;font-weight:700;">● 11</span></div></div>
+        <div class="sidebar-row"><div class="sr-label">Failed</div><div class="sr-value">0</div></div>
+        <div class="sidebar-row"><div class="sr-label">Overall Status</div><div class="sr-value"><span class="badge badge-passed">Passed</span></div></div>
+      </div>
+      <div class="sidebar-card" style="margin-top:1rem;">
+        <div class="sidebar-title">Related Cases</div>
+        <div class="sidebar-row" style="flex-direction:row;align-items:center;justify-content:space-between;"><div><div class="sr-label">EC-008</div><div class="sr-value" style="font-size:0.78rem;">New Hire (MCN)</div></div><a href="ec-008.html" style="color:#2563eb;font-size:0.775rem;font-weight:600;text-decoration:none;">View →</a></div>
+        <div class="sidebar-row" style="flex-direction:row;align-items:center;justify-content:space-between;"><div><div class="sr-label">EC-012</div><div class="sr-value" style="font-size:0.78rem;">Probation Management</div></div><a href="ec-012.html" style="color:#2563eb;font-size:0.775rem;font-weight:600;text-decoration:none;">View →</a></div>
+        <div class="sidebar-row" style="flex-direction:row;align-items:center;justify-content:space-between;"><div><div class="sr-label">EC-023</div><div class="sr-value" style="font-size:0.78rem;">Contract Management</div></div><a href="ec-023.html" style="color:#2563eb;font-size:0.775rem;font-weight:600;text-decoration:none;">View →</a></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer"><div class="container"><div class="footer-inner"><div class="footer-left"><div class="nav-logo-icon">SF</div><span class="footer-name">SF Testing Platform</span></div><div class="footer-right">SAP SuccessFactors Automated Testing &nbsp;·&nbsp; SF Release Testing &nbsp;·&nbsp; 2026</div></div></div></footer>
+</body>
+</html>
