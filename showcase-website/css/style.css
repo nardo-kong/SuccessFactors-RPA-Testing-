@@ -17,6 +17,31 @@ html { font-size: 16px; scroll-behavior: smooth; }
   --accent-border: rgba(37,99,235,0.2);
   --accent-glow: rgba(37,99,235,0.15);
   --accent-veil: rgba(37,99,235,0.12);
+  --badge-passed-bg: #dcfce7;
+  --badge-passed-text: #166534;
+  --badge-passed-border: #bbf7d0;
+  --badge-blue-bg: #dbeafe;
+  --badge-blue-text: #1e40af;
+  --badge-blue-border: #bfdbfe;
+  --badge-violet-bg: #ede9fe;
+  --badge-violet-text: #5b21b6;
+  --badge-violet-border: #ddd6fe;
+  --badge-amber-bg: #fef3c7;
+  --badge-amber-text: #92400e;
+  --badge-amber-border: #fde68a;
+  --badge-pending-bg: #f1f5f9;
+  --badge-pending-text: #64748b;
+  --badge-pending-border: #e2e8f0;
+  --mi-blue-bg: rgba(37,99,235,0.12);
+  --mi-blue-text: #1d4ed8;
+  --mi-amber-bg: rgba(245,158,11,0.15);
+  --mi-amber-text: #b45309;
+  --mi-green-bg: rgba(16,185,129,0.15);
+  --mi-green-text: #047857;
+  --mi-violet-bg: rgba(139,92,246,0.15);
+  --mi-violet-text: #6d28d9;
+  --mi-rose-bg: rgba(244,63,94,0.12);
+  --mi-rose-text: #be123c;
   --shadow-lg: 0 30px 70px rgba(15,23,42,0.12);
   --shadow-md: 0 16px 40px rgba(15,23,42,0.1);
   --shadow-sm: 0 10px 24px rgba(15,23,42,0.08);
@@ -25,6 +50,7 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: var(--ink);
   background: radial-gradient(120% 120% at 10% 10%, #ffffff 0%, #f5f6f8 45%, #eceef3 100%);
+  background-attachment: fixed;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
@@ -76,7 +102,7 @@ a { color: inherit; text-decoration: none; }
   padding: 6rem 0 5rem; overflow: hidden; position: relative;
 }
 .hero::before {
-  content: ''; position: absolute; top: -20%; right: 0; bottom: 0; left: 0;
+  content: ''; position: absolute; inset: 0;
   background: radial-gradient(ellipse at 25% 35%, rgba(250,204,21,0.12) 0%, transparent 60%),
               radial-gradient(ellipse at 75% 40%, rgba(59,130,246,0.15) 0%, transparent 60%);
 }
@@ -252,11 +278,11 @@ a { color: inherit; text-decoration: none; }
   padding: 0.2rem 0.65rem; border-radius: 999px;
   font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em;
 }
-.badge-passed { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
-.badge-blue { background: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
-.badge-violet { background: #ede9fe; color: #5b21b6; border: 1px solid #ddd6fe; }
-.badge-amber { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
-.badge-pending { background: #f1f5f9; color: #64748b; border: 1px solid #e2e8f0; }
+.badge-passed { background: var(--badge-passed-bg); color: var(--badge-passed-text); border: 1px solid var(--badge-passed-border); }
+.badge-blue { background: var(--badge-blue-bg); color: var(--badge-blue-text); border: 1px solid var(--badge-blue-border); }
+.badge-violet { background: var(--badge-violet-bg); color: var(--badge-violet-text); border: 1px solid var(--badge-violet-border); }
+.badge-amber { background: var(--badge-amber-bg); color: var(--badge-amber-text); border: 1px solid var(--badge-amber-border); }
+.badge-pending { background: var(--badge-pending-bg); color: var(--badge-pending-text); border: 1px solid var(--badge-pending-border); }
 
 .card {
   background: rgba(255,255,255,0.9);
@@ -483,11 +509,11 @@ a { color: inherit; text-decoration: none; }
 .module-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
 .module-footer { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
 .module-count { font-size: 0.78rem; font-weight: 600; color: #475569; }
-.mi-blue { background: rgba(37,99,235,0.12); color: #1d4ed8; }
-.mi-amber { background: rgba(245,158,11,0.15); color: #b45309; }
-.mi-green { background: rgba(16,185,129,0.15); color: #047857; }
-.mi-violet { background: rgba(139,92,246,0.15); color: #6d28d9; }
-.mi-rose { background: rgba(244,63,94,0.12); color: #be123c; }
+.mi-blue { background: var(--mi-blue-bg); color: var(--mi-blue-text); }
+.mi-amber { background: var(--mi-amber-bg); color: var(--mi-amber-text); }
+.mi-green { background: var(--mi-green-bg); color: var(--mi-green-text); }
+.mi-violet { background: var(--mi-violet-bg); color: var(--mi-violet-text); }
+.mi-rose { background: var(--mi-rose-bg); color: var(--mi-rose-text); }
 
 /* ========== RESULTS TABLE (Index Page) ========== */
 .results-table,
