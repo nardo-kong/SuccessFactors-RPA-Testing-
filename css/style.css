@@ -280,6 +280,7 @@ a { color: inherit; text-decoration: none; }
 }
 .badge-passed { background: var(--badge-passed-bg); color: var(--badge-passed-text); border: 1px solid var(--badge-passed-border); }
 .badge-blue { background: var(--badge-blue-bg); color: var(--badge-blue-text); border: 1px solid var(--badge-blue-border); }
+.badge-green { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
 .badge-violet { background: var(--badge-violet-bg); color: var(--badge-violet-text); border: 1px solid var(--badge-violet-border); }
 .badge-amber { background: var(--badge-amber-bg); color: var(--badge-amber-text); border: 1px solid var(--badge-amber-border); }
 .badge-pending { background: var(--badge-pending-bg); color: var(--badge-pending-text); border: 1px solid var(--badge-pending-border); }
@@ -514,6 +515,36 @@ a { color: inherit; text-decoration: none; }
 .mi-green { background: var(--mi-green-bg); color: var(--mi-green-text); }
 .mi-violet { background: var(--mi-violet-bg); color: var(--mi-violet-text); }
 .mi-rose { background: var(--mi-rose-bg); color: var(--mi-rose-text); }
+
+/* ========== WORKFLOW STEPS (Index Page) ========== */
+.workflow-steps {
+  display: flex; flex-direction: column; gap: 0;
+  max-width: 800px;
+}
+.workflow-step {
+  display: flex; gap: 1.25rem; align-items: flex-start;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #f1f5f9;
+  position: relative;
+}
+.workflow-step:last-child { border-bottom: none; }
+.workflow-step::before {
+  content: ''; position: absolute; left: 23px; top: 52px; bottom: -1px;
+  width: 2px; background: #e2e8f0; z-index: 0;
+}
+.workflow-step:last-child::before { display: none; }
+.workflow-num {
+  width: 48px; height: 48px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; font-weight: 800; flex-shrink: 0;
+  position: relative; z-index: 1;
+  background: linear-gradient(135deg, #0f172a, #2563eb);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(37,99,235,0.25);
+}
+.workflow-content { flex: 1; padding-top: 0.25rem; }
+.workflow-title { font-size: 1rem; font-weight: 700; color: #0f172a; margin-bottom: 0.35rem; }
+.workflow-desc { font-size: 0.875rem; color: #475569; line-height: 1.7; }
 
 /* ========== RESULTS TABLE (Index Page) ========== */
 .results-table,

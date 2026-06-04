@@ -38,11 +38,11 @@
       <span class="hero-title-accent">Platform</span>
     </h1>
     <p class="hero-subtitle">
-      End-to-end automated regression testing suite for SAP SuccessFactors HCM, covering Employee Central, Time Management, Learning Management, Payroll, and Recruitment modules.
+      Pre-built, reusable automated regression testing suite for SAP SuccessFactors HCM powered by UiPath RPA. Covering Employee Central, Time Management, Learning Management, Payroll, and Recruitment — ready to adapt to your environment.
     </p>
     <div class="hero-ctas">
-      <a href="modules/ec.html" class="btn btn-primary">Explore EC Module  →</span></a>
-      <a href="#runs" class="btn btn-ghost">View Test Results</a>
+      <a href="modules/ec.html" class="btn btn-primary">Explore Test Cases  →</span></a>
+      <a href="#approach" class="btn btn-ghost">How It Works</a>
     </div>
     <div class="hero-stats">
       <div class="hero-stat">
@@ -54,12 +54,12 @@
         <div class="hero-stat-label">Modules</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-number">100%</div>
-        <div class="hero-stat-label">Pass Rate</div>
+        <div class="hero-stat-number">BDD</div>
+        <div class="hero-stat-label">Framework</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-number">Automated</div>
-        <div class="hero-stat-label">Execution</div>
+        <div class="hero-stat-number">Reusable</div>
+        <div class="hero-stat-label">For Your Env</div>
       </div>
     </div>
   </div>
@@ -124,7 +124,7 @@
         <div class="module-desc">Core HR processes including new hire, position management, promotions, probation, contract management, and employee lifecycle events.</div>
         <div class="module-footer">
           <span class="module-count">📋 23 cases</span>
-          <span class="badge badge-passed">All Passed</span>
+          <span style="color:#2563eb;font-size:0.775rem;font-weight:600;">Explore →</span>
         </div>
       </a>
       <a href="modules/time.html" class="module-card">
@@ -134,7 +134,7 @@
         <div class="module-desc">Leave requests, overtime recording, timesheet management, and absence workflow approval for different employee grades and categories.</div>
         <div class="module-footer">
           <span class="module-count">📋 9 cases</span>
-          <span class="badge badge-passed">All Passed</span>
+          <span style="color:#2563eb;font-size:0.775rem;font-weight:600;">Explore →</span>
         </div>
       </a>
       <a href="modules/lms.html" class="module-card">
@@ -144,7 +144,7 @@
         <div class="module-desc">Learning item creation, course enrolment, completion tracking, and compliance reporting across the SuccessFactors Learning platform.</div>
         <div class="module-footer">
           <span class="module-count">📋 14 cases</span>
-          <span class="badge badge-passed">All Passed</span>
+          <span style="color:#2563eb;font-size:0.775rem;font-weight:600;">Explore →</span>
         </div>
       </a>
       <div class="module-card disabled">
@@ -171,128 +171,49 @@
   </div>
 </section>
 
-<!-- RECENT RUNS -->
-<section class="section section-alt" id="runs">
+<!-- AUTOMATION WORKFLOW -->
+<section class="section section-alt" id="approach">
   <div class="container">
     <div class="section-header">
-      <div class="section-eyebrow">Test Execution</div>
-      <h2 class="section-title">Recent Test Run Results</h2>
-      <p class="section-desc">Latest automated test execution summary from the SF Release Testing test set.</p>
+      <div class="section-eyebrow">Our Approach</div>
+      <h2 class="section-title">How UiPath Automates SuccessFactors Testing</h2>
+      <p class="section-desc">A proven, reusable automation framework — each test case follows a structured BDD workflow that can be adapted to your SAP SuccessFactors environment with minimal configuration changes.</p>
     </div>
-    <div class="card" style="overflow:hidden;">
-      <div style="padding:1rem 1.5rem;background:#f8fafc;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
-        <div>
-          <div style="font-size:0.67rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.07em;">Test Set</div>
-          <div style="font-size:0.95rem;font-weight:700;color:#0f172a;margin-top:2px;">SF Release Testing</div>
-        </div>
-        <div style="display:flex;gap:2rem;align-items:center;flex-wrap:wrap;">
-          <div>
-            <div style="font-size:0.67rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.07em;">Execution Type</div>
-            <div style="font-size:0.825rem;font-weight:600;color:#334155;margin-top:2px;">Automated (UiPath)</div>
-          </div>
-          <div>
-            <div style="font-size:0.67rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.07em;">Overall Result</div>
-            <div style="margin-top:4px;"><span class="badge badge-passed">All Passed</span></div>
-          </div>
+    <div class="workflow-steps">
+      <div class="workflow-step">
+        <div class="workflow-num">1</div>
+        <div class="workflow-content">
+          <div class="workflow-title">Authenticate &amp; Proxy</div>
+          <div class="workflow-desc">UiPath retrieves credentials securely from Orchestrator, logs into SuccessFactors, and proxies as the required user roles — HR operators, line managers, approvers — to simulate real multi-role workflows.</div>
         </div>
       </div>
-      <div style="overflow-x:auto;">
-        <table class="runs-table">
-          <thead>
-            <tr>
-              <th>POC Reference</th>
-              <th>Test Case</th>
-              <th>Module</th>
-              <th>Assertions</th>
-              <th>Duration</th>
-              <th>Executed</th>
-              <th>Result</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="poc-id">POC:761</span></td>
-              <td style="font-weight:600;color:#0f172a;">Create and Maintain Jobs</td>
-              <td><span class="badge badge-blue">EC</span></td>
-              <td><span class="assert-pill assert-pill-green">● 9 Passed</span></td>
-              <td class="text-muted" style="font-family:monospace;">00:04:20</td>
-              <td class="text-muted text-sm">2026-05-21 15:53</td>
-              <td><span class="badge badge-passed">Passed</span></td>
-              <td><a href="ec-001.html" style="color:#2563eb;text-decoration:none;font-weight:600;font-size:0.775rem;">View →</a></td>
-            </tr>
-            <tr>
-              <td><span class="poc-id">POC:303</span></td>
-              <td style="font-weight:600;color:#0f172a;">Create Position</td>
-              <td><span class="badge badge-blue">EC</span></td>
-              <td><span class="assert-pill assert-pill-green">● 14 Passed</span></td>
-              <td class="text-muted" style="font-family:monospace;">00:07:09</td>
-              <td class="text-muted text-sm">2026-05-22 12:58</td>
-              <td><span class="badge badge-passed">Passed</span></td>
-              <td><a href="ec-002.html" style="color:#2563eb;text-decoration:none;font-weight:600;font-size:0.775rem;">View →</a></td>
-            </tr>
-            <tr>
-              <td><span class="poc-id">POC:1055</span></td>
-              <td style="font-weight:600;color:#0f172a;">Promotion Management</td>
-              <td><span class="badge badge-blue">EC</span></td>
-              <td><span class="assert-pill assert-pill-green">● 11 Passed</span></td>
-              <td class="text-muted" style="font-family:monospace;">00:10:39</td>
-              <td class="text-muted text-sm">2026-05-21 15:48</td>
-              <td><span class="badge badge-passed">Passed</span></td>
-              <td><a href="ec-007.html" style="color:#2563eb;text-decoration:none;font-weight:600;font-size:0.775rem;">View →</a></td>
-            </tr>
-            <tr>
-              <td><span class="poc-id">POC:2184</span></td>
-              <td style="font-weight:600;color:#0f172a;">New Hire (MCN)</td>
-              <td><span class="badge badge-blue">EC</span></td>
-              <td><span class="assert-pill assert-pill-green">● 25 Passed</span></td>
-              <td class="text-muted" style="font-family:monospace;">00:09:08</td>
-              <td class="text-muted text-sm">2026-05-21 16:51</td>
-              <td><span class="badge badge-passed">Passed</span></td>
-              <td><a href="ec-008.html" style="color:#2563eb;text-decoration:none;font-weight:600;font-size:0.775rem;">View →</a></td>
-            </tr>
-            <tr>
-              <td><span class="poc-id">POC:1806</span></td>
-              <td style="font-weight:600;color:#0f172a;">Probation Management</td>
-              <td><span class="badge badge-blue">EC</span></td>
-              <td><span class="assert-pill assert-pill-green">● 5 Passed</span></td>
-              <td class="text-muted" style="font-family:monospace;">00:06:14</td>
-              <td class="text-muted text-sm">2026-05-21 17:07</td>
-              <td><span class="badge badge-passed">Passed</span></td>
-              <td><a href="ec-012.html" style="color:#2563eb;text-decoration:none;font-weight:600;font-size:0.775rem;">View →</a></td>
-            </tr>
-            <tr>
-              <td><span class="poc-id">POC:1130</span></td>
-              <td style="font-weight:600;color:#0f172a;">Contract Management (HKG)</td>
-              <td><span class="badge badge-blue">EC</span></td>
-              <td><span class="assert-pill assert-pill-green">● 11 Passed</span></td>
-              <td class="text-muted" style="font-family:monospace;">00:09:15</td>
-              <td class="text-muted text-sm">2026-05-21 16:02</td>
-              <td><span class="badge badge-passed">Passed</span></td>
-              <td><a href="ec-023.html" style="color:#2563eb;text-decoration:none;font-weight:600;font-size:0.775rem;">View →</a></td>
-            </tr>
-            <tr>
-              <td><span class="poc-id">POC:1056</span></td>
-              <td style="font-weight:600;color:#0f172a;">Enter OT and Approval (AE and above)</td>
-              <td><span class="badge badge-amber">Time</span></td>
-              <td><span class="assert-pill assert-pill-green">● 5 Passed</span></td>
-              <td class="text-muted" style="font-family:monospace;">00:02:39</td>
-              <td class="text-muted text-sm">2026-05-21 17:15</td>
-              <td><span class="badge badge-passed">Passed</span></td>
-              <td><a href="time-001.html" style="color:#2563eb;text-decoration:none;font-weight:600;font-size:0.775rem;">View →</a></td>
-            </tr>
-            <tr>
-              <td><span class="poc-id">POC:1281</span></td>
-              <td style="font-weight:600;color:#0f172a;">Request Leave — Sick Leave</td>
-              <td><span class="badge badge-amber">Time</span></td>
-              <td><span class="assert-pill assert-pill-green">● 8 Passed</span></td>
-              <td class="text-muted" style="font-family:monospace;">00:03:05</td>
-              <td class="text-muted text-sm">2026-05-21 17:23</td>
-              <td><span class="badge badge-passed">Passed</span></td>
-              <td><a href="time-009.html" style="color:#2563eb;text-decoration:none;font-weight:600;font-size:0.775rem;">View →</a></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="workflow-step">
+        <div class="workflow-num">2</div>
+        <div class="workflow-content">
+          <div class="workflow-title">Execute Test Steps (Given / When / Then)</div>
+          <div class="workflow-desc">Each test case follows BDD structure: set up preconditions (Given), perform actions like creating records or submitting workflows (When), and verify outcomes (Then). All UI interactions are automated end-to-end.</div>
+        </div>
+      </div>
+      <div class="workflow-step">
+        <div class="workflow-num">3</div>
+        <div class="workflow-content">
+          <div class="workflow-title">Drive Approval Workflows</div>
+          <div class="workflow-desc">For processes requiring multi-level approvals, the robot automatically switches proxy context to each approver in sequence — validating the complete approval chain without any manual intervention.</div>
+        </div>
+      </div>
+      <div class="workflow-step">
+        <div class="workflow-num">4</div>
+        <div class="workflow-content">
+          <div class="workflow-title">Assert &amp; Capture Evidence</div>
+          <div class="workflow-desc">Automated assertions verify data integrity at each step. Screenshots are captured at key verification points and attached to the test report — providing complete audit trail and visual evidence.</div>
+        </div>
+      </div>
+      <div class="workflow-step">
+        <div class="workflow-num">5</div>
+        <div class="workflow-content">
+          <div class="workflow-title">Report to Test Manager</div>
+          <div class="workflow-desc">All results — pass/fail status, assertion details, screenshots, and execution metadata — are automatically published to UiPath Test Manager for centralised tracking and reporting.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -304,7 +225,7 @@
     <div class="section-header section-header-center">
       <div class="section-eyebrow" style="color:#60a5fa;justify-content:center;">Powered By</div>
       <h2 class="section-title section-title-light">Technology Stack</h2>
-      <p class="section-desc" style="color:rgba(255,255,255,0.42);margin:0 auto;">Built on enterprise-grade automation and HCM platforms for reliable, repeatable testing.</p>
+      <p class="section-desc" style="color:rgba(255,255,255,0.42);margin:0 auto;">Built on enterprise-grade automation and HCM platforms — the same stack powers testing for any SuccessFactors tenant.</p>
     </div>
     <div class="tech-grid" style="max-width:860px;margin:0 auto;">
       <div class="tech-item"><span class="tech-icon">🤖</span><div class="tech-name">UiPath RPA</div><div class="tech-desc">Test Automation Framework</div></div>
@@ -323,7 +244,7 @@
         <div class="nav-logo-icon">SF</div>
         <span class="footer-name">SF Testing Platform</span>
       </div>
-      <div class="footer-right">SAP SuccessFactors Automated Testing &nbsp;·&nbsp; SF Release Testing &nbsp;·&nbsp; 2026</div>
+      <div class="footer-right">SAP SuccessFactors Automated Testing &nbsp;·&nbsp; Powered by UiPath RPA &nbsp;·&nbsp; 2026</div>
     </div>
   </div>
 </footer>
